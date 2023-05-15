@@ -4,6 +4,7 @@ import React from "react";
 import Slider from "@/components/Slider";
 import { List } from "@/components/Product/List";
 import { ButtonCategotyes } from "@/ui/ButtonCategotyes";
+import { RenderImgCategory } from "@/components/Categories/RenderImgCategory";
 
 type LayoutProps = {
   title: string;
@@ -20,6 +21,7 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
       <>
         <Header />
         <Slider />
+        <RenderImgCategory />
         <ButtonCategotyes />
         <List>{children}</List>
       </>

@@ -1,4 +1,5 @@
-import { TCategories } from '@/types/Product';
+
+import { TCategories } from '@/types/Catigories';
 import { API_URL } from './index';
 import axios from 'axios';
 

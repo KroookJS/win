@@ -24,6 +24,7 @@ img {
   --fs-sm: 14px;
   --fs-md: 16px;
   --fs-bg: 20px;
+  --fs-logo: 30px;
   --fw-light: 300;
   --fw-middle: 500;
   --fw-normal: 600;
@@ -33,11 +34,18 @@ img {
 
   --colors-text: hsl(200, 15%, 8%);
   --colors-bg: hsl(0, 0%, 98%);
+  --colors-bg-cart: #eaeaea;
   --colors-ui-base: hsl(0, 0%, 100%);
+  --colors-btn: #005bff;
+  --colors-btn-border: 0000001b;
+  --colors-btn-hover: #27b11973;
+
+  /* whiht */
+  --width-mx: 1240px;
 
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--family);
 }

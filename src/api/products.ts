@@ -1,4 +1,4 @@
-import { TProducts } from '../types/Product';
+import { TItemProduct, TProducts } from '../types/Product';
 import { API_URL } from './index';
 import axios from 'axios';
 
@@ -7,4 +7,7 @@ export async function getAllProducts (limit: string, page: string): Promise<TPro
 }
 export const getAll = async (): Promise<TProducts> => {
     return (await axios.get(API_URL + '/products')).data;
+  };
+export const getOneProduct = async (id: string): Promise<TItemProduct> => {
+    return (await axios.get(API_URL + `/products/${id}`)).data;
   };

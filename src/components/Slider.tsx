@@ -2,9 +2,13 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, Keyboard } from "swiper";
 import "swiper/swiper-bundle.min.css";
-import { Container } from "./container";
+import { Container } from "../ui/container";
 import { imgeSlider } from "@/utils/sliderArr";
-import { TItemSlider } from "@/types/Product";
+
+import Link from "next/link";
+
+import { TItemSlider } from "@/types/Slider";
+import { LinkStyle } from "@/ui/Button";
 
 export default function Slider() {
   return (
@@ -25,10 +29,12 @@ export default function Slider() {
           className="mySwiper"
         >
           {imgeSlider &&
-            imgeSlider.map((el: TItemSlider) => {
+            imgeSlider.map((img: TItemSlider) => {
               return (
-                <SwiperSlide key={el.id}>
-                  <img alt={el.title} src={el.image} />
+                <SwiperSlide key={img.id}>
+                  <Link href={img.href} style={LinkStyle}>
+                    <img alt={img.title} src={img.image} />
+                  </Link>
                 </SwiperSlide>
               );
             })}

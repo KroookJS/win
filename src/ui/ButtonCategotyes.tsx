@@ -1,18 +1,18 @@
-import { Container } from "@/components/container";
+import { Container } from "@/ui/container";
 import Link from "next/link";
 import styled from "styled-components";
-
 
 const Button = styled.button`
   width: 100%;
   height: 50px;
   border: none;
-  border-radius: 15px;
-  margin-top: 10px;
-  background: #005bff;
-  color: white;
+
+  border-radius: var(--radii);
+  background: var(--colors-btn);
+  color: var(--colors-bg);
   font-size: var(--fs-bg);
   font-weight: var(--fw-light);
+
   cursor: pointer;
 `;
 

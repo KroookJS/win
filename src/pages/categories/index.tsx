@@ -1,10 +1,9 @@
 "use client";
-import { Header } from "@/components/Header";
-import Slider from "@/components/Slider";
 import { getAllCategorys } from "@/api/categorys";
-import { CategortiesList } from "@/components/Categories/CategortiesList";
 import { CategortiesItem } from "@/components/Categories/CategortiesItem";
 import { Layout } from "@/layout/Layout";
+import { LinkStyle } from "@/ui/Button";
+import Link from "next/link";
 
 export default function CategoriesPage({
   categories,
@@ -14,8 +13,16 @@ export default function CategoriesPage({
   return (
     <>
       <Layout title="pageProduct">
-        {categories.map((catigory: any) => {
-          return <CategortiesItem key={catigory} title={catigory} />;
+        {categories.map((catigory: string) => {
+          return (
+            <Link
+              key={catigory}
+              href={`/categories/${catigory}`}
+              style={LinkStyle}
+            >
+              <CategortiesItem key={catigory} title={catigory} />
+            </Link>
+          );
         })}
       </Layout>
     </>
