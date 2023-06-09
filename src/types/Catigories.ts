@@ -1,3 +1,19 @@
+export interface ICategory {
+    _id: string;
+    category: string;
+    imageCategoryUrl: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+}
+export interface IModel {
+    _id: string;
+    model: string;
+    imageModelUrl: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+}
 export type TItemCategory = {
     id: number;
     title: string;

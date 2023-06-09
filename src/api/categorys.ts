@@ -1,14 +1,21 @@
+import { IPost } from '@/types/Post';
 
-import { TCategories } from '@/types/Catigories';
+import { ICategory } from '@/types/Catigories';
 import { API_URL } from './index';
 import axios from 'axios';
 
 
 
-export async function getAllCategorys (): Promise<string[]> {
-    return (await axios.get(API_URL + `/products/categories`)).data;
+export async function getAllCategorys (): Promise<ICategory[]> {
+    return (await axios.get(API_URL + `/category`)).data;
 }
-export async function getOneCategory (categoty: string): Promise<TCategories> {
-    return (await axios.get(API_URL + `/products/category/${categoty}`)).data;
+export async function getOneCategory (id: string): Promise<IPost[]> {
+    return (await axios.get(API_URL + `/category/${id}`)).data;
+}
+/* export async function getOneCategoryByName (category: string): Promise<IPost[]> {
+    return (await axios.get(API_URL + `/find/${category}`)).data;
+} */
+export async function getOneCategoryByName (category: string): Promise<ICategory[]> {
+    return (await axios.get(API_URL + `/find/category/${category}`)).data;
 }
 

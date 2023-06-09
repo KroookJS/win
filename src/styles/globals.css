@@ -15,7 +15,9 @@ h5 {
 }
 img {
   width: 100%;
-  border-radius: 20px;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 :root {
@@ -36,16 +38,56 @@ img {
   --colors-bg: hsl(0, 0%, 98%);
   --colors-bg-cart: #eaeaea;
   --colors-ui-base: hsl(0, 0%, 100%);
-  --colors-btn: #005bff;
+  /* --colors-btn: #005bff; */
+  /* --colors-btn: #89e69ad3; */
+  /* --colors-btn: #ec00f7c7; Фиалет */
+  --colors-btn: #27b119;
+  --colors-line: linear-gradient(to left, #962d50 7%, #603a46, #3e383a 80%);
+  --colors-line-new: linear-gradient(
+    to right top,
+    #ffc600 31%,
+    #27b219,
+    #27b219 88%
+  );
   --colors-btn-border: 0000001b;
   --colors-btn-hover: #27b11973;
 
   /* whiht */
   --width-mx: 1240px;
+  --width-mx-project: 1240px;
 
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --shadow-upload: rgba(176, 130, 228, 0.2) 0px 8px 24px;
 }
 
 body {
   font-family: var(--family);
+  background: var(--colors-text);
+
+  color: var(--colors-ui-base);
+  margin: 0;
+  padding: 0;
+}
+
+b {
+  color: gray;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  height: calc((100% - 30px) / 2) !important;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

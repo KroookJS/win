@@ -13,6 +13,7 @@ const CardTitle = styled.h3`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  color: #fff;
 `;
 
 const CardDesk = styled.p`
@@ -33,7 +34,6 @@ const CardPrice = styled.h3`
 
   color: #51af74d1;
 `;
-
 
 export const Cart: FC<TItemProduct> = ({
   title,

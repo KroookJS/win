@@ -1,25 +1,19 @@
 import { getAllProducts } from "../api/products";
-import { Cart } from "../components/Product/Cart";
+import { Cart } from "../components/Cart/Cart";
 
-import { TItemProduct, TProducts } from "@/types/Product";
+import { IPost } from "@/types/Post";
 import { Layout } from "@/layout/Layout";
 import Link from "next/link";
 import { LinkStyle } from "@/ui/Button";
+import { CartPost } from "@/components/Cart/CartPost";
+import { useState } from "react";
 
-export default function Product({ product }: { product: TProducts }) {
+export default function Product({ posts }: { posts: IPost[] }) {
   return (
     <>
       <Layout title="pageProduct">
-        {product.products.map((product: TItemProduct) => {
-          return (
-            <Link
-              key={product.id}
-              href={`/details/${product.id}`}
-              style={LinkStyle}
-            >
-              <Cart key={product.id} {...product} />
-            </Link>
-          );
+        {posts.map((post: IPost) => {
+          return <CartPost {...post} key={post._id} />;
         })}
       </Layout>
     </>
@@ -27,10 +21,10 @@ export default function Product({ product }: { product: TProducts }) {
 }
 
 export async function getServerSideProps() {
-  const product = await getAllProducts("8", "1");
+  const posts = await getAllProducts();
   return {
     props: {
-      product,
+      posts,
     },
   };
 }

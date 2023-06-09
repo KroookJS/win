@@ -1,30 +1,30 @@
 export const catigoryImage = [
     {
       id: 0,
-      title: "smart",
+      title: "Hart",
       image:
-        "https://static-basket-01.wb.ru/vol1/crm-bnrs/bners1/desk_fruto_1405_2line.webp",
-        href: '/categories/groceries',
+        "https://img.365vidz.com/uploads/posts/2023-05/svodnaya-sestra-sygrala-s-parnem-v-ochko-i-poluchila-v-.webp",
+      href: '/categories/groceries',
     },
     {
       id: 1,
-      title: "smart",
+      title: "DB",
       image:
-        "https://static-basket-01.wb.ru/vol1/crm-bnrs/bners1/desk_garnier_1405_2line.webp",
+        "https://img.365vidz.com/uploads/posts/2023-05/seks-s-trenerom-ocharovatel-noy-hohanny-dzhoy-posle-sil.webp",
       href: '/categories/womens-bags',
     },
     {
       id: 2,
-      title: "smart",
+      title: "Negr",
       image:
-        "https://static-basket-01.wb.ru/vol1/crm-bnrs/bners1/desk_uniqute_1405_2line.webp",
+        "https://img.365vidz.com/uploads/posts/2023-05/tovarisch-posadil-milu-sobolov-na-her-i-snyal-na-telefo.webp",
       href: '/categories/fragrances',
     },
     {
       id: 3,
-      title: "smart",
+      title: "Top 20 week",
       image:
-        "https://static-basket-01.wb.ru/vol1/crm-bnrs/bners1/desk_crocs_1405_3line.webp",
+        "https://img.365vidz.com/uploads/posts/2023-05/domashnee-porno-s-littl-endzhel-s-nastoyaschim-real-nym.webp",
       href: '/categories/mens-shoes',
-    },
+    }
   ];

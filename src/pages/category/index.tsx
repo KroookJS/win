@@ -2,25 +2,26 @@
 import { getAllCategorys } from "@/api/categorys";
 import { CategortiesItem } from "@/components/Categories/CategortiesItem";
 import { Layout } from "@/layout/Layout";
+import { ICategory } from "@/types/Catigories";
 import { LinkStyle } from "@/ui/Button";
 import Link from "next/link";
 
 export default function CategoriesPage({
   categories,
 }: {
-  categories: string[];
+  categories: ICategory[];
 }) {
   return (
     <>
-      <Layout title="pageProduct">
-        {categories.map((catigory: string) => {
+      <Layout title="Category Page">
+        {categories.map((catigory: ICategory) => {
           return (
             <Link
-              key={catigory}
-              href={`/categories/${catigory}`}
+              key={catigory._id}
+              href={`/category/${catigory._id}`}
               style={LinkStyle}
             >
-              <CategortiesItem key={catigory} title={catigory} />
+              <CategortiesItem key={catigory._id} title={catigory.category} />
             </Link>
           );
         })}

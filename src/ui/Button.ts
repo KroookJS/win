@@ -28,7 +28,9 @@ export const ButtonBy = styled.button`
   border: 2px solid var(--colors-btn-border);
   border-radius: var(--radii);
   background: var(--colors-btn);
-
+  /* background-image: linear-gradient( to right top, #ffc600 20%, #62a75bab, #27b319 80%); */
+  background-image: linear-gradient(90deg, #cfecd0, #ffc5ca);
+  color: #474242;
   &:hover {
     background: var(--colors-btn-hover);
     border: 2px solid (--colors-btn-hover);

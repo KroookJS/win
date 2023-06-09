@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, Keyboard } from "swiper";
 import "swiper/swiper-bundle.min.css";
@@ -9,6 +9,9 @@ import Link from "next/link";
 
 import { TItemSlider } from "@/types/Slider";
 import { LinkStyle } from "@/ui/Button";
+import styled from "styled-components";
+
+const SliderText = styled.h3``;
 
 export default function Slider() {
   return (
@@ -16,22 +19,25 @@ export default function Slider() {
       <Container>
         <Swiper
           navigation={true}
-          modules={[Navigation, Pagination, Autoplay, Keyboard]}
+          modules={[Navigation, Pagination, /* Autoplay */ Keyboard]}
           pagination={{ clickable: true }}
           loop={true}
           keyboard={{
             enabled: true,
           }}
-          autoplay={{
+          /*          autoplay={{
             delay: 3500,
             disableOnInteraction: false,
-          }}
+          }} */
           className="mySwiper"
         >
           {imgeSlider &&
             imgeSlider.map((img: TItemSlider) => {
               return (
-                <SwiperSlide key={img.id}>
+                <SwiperSlide
+                  style={{ background: "black", position: "relative" }}
+                  key={img.id}
+                >
                   <Link href={img.href} style={LinkStyle}>
                     <img alt={img.title} src={img.image} />
                   </Link>
