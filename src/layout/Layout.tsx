@@ -38,7 +38,7 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
         <Header />
 
         <Slider />
-        <TitleHot>Тут будет Slider</TitleHot>
+        <TitleHot>Top Hot Week</TitleHot>
 
         <RenderImgCategory />
         <ButtonCategotyes />
