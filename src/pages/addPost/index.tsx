@@ -1,7 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 
-import "easymde/dist/easymde.min.css";
 import Link from "next/link";
 import { LinkStyle } from "@/ui/Button";
 import { WrapperForm } from "@/ui/Wrraper";
