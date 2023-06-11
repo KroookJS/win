@@ -1,9 +1,10 @@
 import React, { FC } from "react";
 
 import Select from "react-select";
-import { colourOptions, stateOptions } from "../utils/dataCategory";
+
 import { getAllModels } from "@/api/model";
 import { IModel } from "@/types/Catigories";
+import { colourOptions } from "@/utils/dataCategory";
 
 export const SelecctReactModel = () => {
   const [modelsServer, setModelsServer] = React.useState<IModel[]>();

@@ -1,5 +1,5 @@
+import { FC } from "react";
 import { Button, Form, Input } from "antd";
-import React, { FC } from "react";
 import styled from "styled-components";
 
 type TProps = {
@@ -96,3 +96,5 @@ export const FormInput: FC<TProps> = ({
     </div>
   );
 };
+
+export default FormInput;

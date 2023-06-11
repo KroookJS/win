@@ -1,15 +1,14 @@
-import React, { FC, useContext } from "react";
+import React, {  useContext } from "react";
 
 import Select from "react-select";
-import { colourOptions } from "../utils/dataCategory";
-import { stateOptions } from "../utils/dataCategory";
+
 import { getAllCategorys } from "@/api/categorys";
 import { ICategory } from "@/types/Catigories";
 import { CustomContext } from "@/contrex/TasksProvider";
+import { colourOptions } from "@/utils/dataCategory";
 
 export const SelecctReactCategory = () => {
   const [categoryesServer, setCategoryesServer] = React.useState<ICategory[]>();
-  const [catValue, setCatValue] = React.useState();
   const { categoryFile, setCategoryFile } = useContext(CustomContext);
 
   React.useEffect(() => {

@@ -1,6 +1,6 @@
 import { getFavorite } from "@/api/products";
 import { List } from "@/components/Cart/List";
-import CartColumnProfile from "@/components/CartColumnProfile";
+
 import GetItem from "@/components/GetItem";
 import { Header } from "@/components/Header";
 import { NavBarModel } from "@/components/NavBarModel";
@@ -43,7 +43,6 @@ export default function Favorite() {
       ) : (
         <p>Favorite page</p>
       )}
-      {/* <CartColumnProfile publicate={favorite} title='Favorite publicate'/> */}
       <div style={{ maxWidth: 250 }}></div>
       <NavBarModel />
     </>

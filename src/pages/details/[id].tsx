@@ -9,36 +9,48 @@ export default function DetailsPage({ post }: { post: IPost }) {
   return (
     <div>
       <Header />
-      {post && <Info {...post} />}
+      {post ? <Info {...post} /> : <p>Loading Info...</p>}
     </div>
   );
 }
 
 export const getStaticPaths = async () => {
-  const data = await getAll();
+  try {
+    const data = await getAll();
 
-  const paths = data.map((el: IPost) => ({
-    params: { id: el._id.toString() },
-  }));
+    const paths = data.map((el: IPost) => ({
+      params: { id: el._id.toString() },
+    }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch {
+    return {
+      props: { socials: null },
+    };
+  }
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params ? context.params.id : "";
-  const post = await getOneProduct(String(id));
+  try {
+    const id = context.params ? context.params.id : "";
+    const post = await getOneProduct(String(id));
 
-  if (!post) {
+    if (!post) {
+      return {
+        notFound: true,
+      };
+    }
     return {
-      notFound: true,
+      props: {
+        post,
+      },
+    };
+  } catch {
+    return {
+      props: { socials: null },
     };
   }
-  return {
-    props: {
-      post,
-    },
-  };
 };

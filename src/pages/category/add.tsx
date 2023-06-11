@@ -1,5 +1,5 @@
 import { WrapperForm } from "@/ui/Wrraper";
-import React, { useRef, useState } from "react";
+import React, {  useState } from "react";
 import { BtnBlock, ImgBlock, ImgContainer, TitleBlock } from "../addPost";
 import { Button, Form, Input } from "antd";
 import Link from "next/link";

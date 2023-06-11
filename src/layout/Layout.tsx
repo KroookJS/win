@@ -14,7 +14,7 @@ import { Context, CustomContext } from "@/contrex/TasksProvider";
 import SliderCategory from "@/components/Categories/SliderCategory";
 
 type LayoutProps = {
-  title: string;
+  title?: string;
   category?: string;
 };
 

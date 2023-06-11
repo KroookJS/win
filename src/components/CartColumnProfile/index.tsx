@@ -13,7 +13,7 @@ export default function CartColumnProfile({
   publicate,
   title,
 }: {
-  publicate?: IPost;
+  publicate?: IPost[];
   title?: string;
 }) {
   return (
@@ -24,7 +24,11 @@ export default function CartColumnProfile({
         {publicate &&
           publicate.map((post: IPost) => {
             return (
-              <ImgPost key={post._id} src={`http://localhost:4444${post.privUrl}`} alt="photo Profile" />
+              <ImgPost
+                key={post._id}
+                src={`http://localhost:4444${post.privUrl}`}
+                alt="photo Profile"
+              />
             );
           })}
       </WrapperProfileColumn>
