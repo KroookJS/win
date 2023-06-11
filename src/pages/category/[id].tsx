@@ -16,7 +16,7 @@ export default function CatigoryPage({ categories }: { categories: IPost[] }) {
 
   return (
     <>
-      <Layout category={categories[0].category[0]}>
+      <Layout title="Category_id" category={categories[0].category[0]}>
         {categories.map((catigory: IPost) => {
           return (
             <Link href={`/details/${catigory._id}`} style={LinkStyle}>
@@ -30,19 +30,18 @@ export default function CatigoryPage({ categories }: { categories: IPost[] }) {
 }
 
 export const getStaticPaths = async () => {
-  const data = await getAllCategorys();
+  try {
+    const data = await getAllCategorys();
 
-  /* const paths = data.map((id) => ({
-    params: { id: id.toString() },
-  })); */
-  const paths = data.map((el: IPost) => ({
-    params: { id: el._id.toString() },
-  }));
+    const paths = data.map((el: any) => ({
+      params: { id: el._id.toString() },
+    }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {}
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {

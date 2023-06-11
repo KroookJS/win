@@ -14,17 +14,21 @@ export default function CategoriesPage({
   return (
     <>
       <Layout title="Category Page">
-        {categories.map((catigory: ICategory) => {
-          return (
-            <Link
-              key={catigory._id}
-              href={`/category/${catigory._id}`}
-              style={LinkStyle}
-            >
-              <CategortiesItem key={catigory._id} title={catigory.category} />
-            </Link>
-          );
-        })}
+        {categories ? (
+          categories.map((catigory: ICategory) => {
+            return (
+              <Link
+                key={catigory._id}
+                href={`/category/${catigory._id}`}
+                style={LinkStyle}
+              >
+                <CategortiesItem key={catigory._id} title={catigory.category} />
+              </Link>
+            );
+          })
+        ) : (
+          <p>Loading....</p>
+        )}
       </Layout>
     </>
   );

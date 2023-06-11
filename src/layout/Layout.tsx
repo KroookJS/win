@@ -15,7 +15,7 @@ import SliderCategory from "@/components/Categories/SliderCategory";
 
 type LayoutProps = {
   title: string;
-  category: string;
+  category?: string;
 };
 
 export const TitleHot = styled.h2`
@@ -36,9 +36,9 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
       </Head>
       <>
         <Header />
-        {/* <NavBar /> */}
+
         <Slider />
-        <TitleHot>The Best week</TitleHot>
+        <TitleHot>Тут будет Slider</TitleHot>
 
         <RenderImgCategory />
         <ButtonCategotyes />

@@ -1,25 +1,16 @@
 import * as React from "react";
-import TextField from "@mui/material/TextField";
-import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { getAllCategorys } from "@/api/categorys";
 
 import "easymde/dist/easymde.min.css";
 import Link from "next/link";
-import { ButtonBy, LinkStyle } from "@/ui/Button";
-
-import TextFileDescription from "@/components/TextFileDescription";
-import { SelecctReactCategory } from "@/components/SelecctReactCategory";
-import { SelecctReactModel } from "@/components/SelecctReactModel";
-import AddFileAnt from "@/components/AddFileAnt";
-import FormAnt from "@/components/FormAnt";
+import { LinkStyle } from "@/ui/Button";
 import { WrapperForm } from "@/ui/Wrraper";
 import { CategoryForm } from "@/components/CategoryForm";
 import styled from "styled-components";
 import { UploadVideo } from "@/api/upload";
 import { FormInput } from "./inputIpload/FormInput";
 import axios from "axios";
-import { useRouter } from "next/router";
+
 import { CustomContext } from "@/contrex/TasksProvider";
 
 export const BtnBlock = styled.div`
@@ -58,9 +49,9 @@ export const TitleBlock = styled.h3`
 
 export default function AddPost() {
   const [text, setText] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState(false);
+
   const [title, setTitle] = React.useState("");
-  const [tags, setTags] = React.useState("");
+
   const [imageUrl, setImageUrl] = React.useState<any>("");
   const [imagePrivIpload, setImagePrivIpload] = React.useState<any>("");
   const [imagePrivUrl, setImagePrivUrl] = React.useState(
