@@ -1,4 +1,3 @@
-"use client";
 import { getAllCategorys } from "@/api/categorys";
 import { CategortiesItem } from "@/components/Categories/CategortiesItem";
 import { Layout } from "@/layout/Layout";

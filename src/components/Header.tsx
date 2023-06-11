@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Container, ContainerHeader } from "../ui/container";
 import { GiHamburgerMenu } from "react-icons/gi";
