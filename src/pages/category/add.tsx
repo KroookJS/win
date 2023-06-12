@@ -1,5 +1,5 @@
 import { WrapperForm } from "@/ui/Wrraper";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { BtnBlock, ImgBlock, ImgContainer, TitleBlock } from "../addPost";
 import { Button, Form, Input } from "antd";
 import Link from "next/link";
@@ -32,7 +32,7 @@ export default function Add() {
         imageCategoryUrl: imageCategoty.url,
       };
 
-      await axios.post("http://localhost:4444/category", fields);
+      await axios.post("http://45.12.239.183/category", fields);
 
       /* navigate(`/trx`); */
     } catch (error) {
