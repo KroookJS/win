@@ -138,8 +138,8 @@ export const CartPost: FC<IPost> = ({
           <CartHeaderName>
             <Link href="/profile">
               <CartAvar src="https://yobte.ru/uploads/posts/2019-11/devushki-v-krasnom-plate-155-foto-82.jpg" />
-              <CardDesk>Maly Fox</CardDesk>
             </Link>
+            <CardDesk>Maly Fox</CardDesk>
           </CartHeaderName>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <PlayBnt>97%</PlayBnt>
@@ -150,7 +150,7 @@ export const CartPost: FC<IPost> = ({
         </CartHeaderContainer>
       </CartHeader>
       <Link href={`details/${_id}`}>
-        <CardImage alt={title} src={`http://45.12.239.183${privUrl}`} />
+        <CardImage alt={title} src={`http://45.12.239.183:4444${privUrl}`} />
       </Link>
       <CartBlock>
         <CartBlockDirection>
