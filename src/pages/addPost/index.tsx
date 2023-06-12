@@ -129,7 +129,7 @@ export default function AddPost() {
         <ImgBlock
           src={
             imagePrivIpload
-              ? `http://localhost:4444${imagePrivIpload.url}`
+              ? `http://45.12.239.183:4444${imagePrivIpload.url}`
               : imagePrivUrl
           }
           alt="privImg"

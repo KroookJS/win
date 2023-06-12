@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Button, Form, Input } from "antd";
 import styled from "styled-components";
+import { ButtonBy, ButtonDelete, ButtonNext } from "@/ui/Button";
+import { ButtonCategotyes } from "@/ui/ButtonCategotyes";
 
 type TProps = {
   imputFileRef: any;
@@ -18,9 +20,10 @@ type TProps = {
 
 export const InputButtonBlock = styled.div`
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 `;
 
 export const FormInput: FC<TProps> = ({
@@ -39,18 +42,18 @@ export const FormInput: FC<TProps> = ({
   return (
     <div>
       <InputButtonBlock>
-        <Button onClick={() => imputFileRef.current.click()}>
+        <ButtonBy onClick={() => imputFileRef.current.click()}>
           Загрузить Video
-        </Button>
+        </ButtonBy>
         <input
           ref={imputFileRef}
           type="file"
           onChange={handleChangeFile}
           hidden
         />
-        <Button onClick={() => imputFilePrivRef.current.click()}>
+        <ButtonBy onClick={() => imputFilePrivRef.current.click()}>
           Загрузить Priviu
-        </Button>
+        </ButtonBy>
         <input
           ref={imputFilePrivRef}
           type="file"
@@ -58,9 +61,9 @@ export const FormInput: FC<TProps> = ({
           hidden
         />
         {imageUrl && (
-          <Button color="error" onClick={onClickRemoveImage}>
+          <ButtonDelete color="error" onClick={onClickRemoveImage}>
             Удалить
-          </Button>
+          </ButtonDelete>
         )}
       </InputButtonBlock>
 
@@ -84,15 +87,7 @@ export const FormInput: FC<TProps> = ({
         />
       </Form.Item>
 
-      <Form.Item>
-        <Button
-          onClick={() => setIsEdit(false)}
-          type="primary"
-          htmlType="submit"
-        >
-          Далее
-        </Button>
-      </Form.Item>
+      <ButtonNext onClick={() => setIsEdit(false)}>Далее</ButtonNext>
     </div>
   );
 };

@@ -26,7 +26,7 @@ export default function CartColumnProfile({
             return (
               <ImgPost
                 key={post._id}
-                src={`http://localhost:4444${post.privUrl}`}
+                src={`http://45.12.239.183:4444${post.privUrl}`}
                 alt="photo Profile"
               />
             );

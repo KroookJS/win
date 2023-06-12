@@ -47,7 +47,7 @@ export default function Add() {
         <ImgBlock
           src={
             imageCategoty
-              ? `http://localhost:4444${imageCategoty.url}`
+              ? `http://45.12.239.183:4444${imageCategoty.url}`
               : "imagePrivUrl"
           }
           alt="privImg"

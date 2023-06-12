@@ -21,7 +21,7 @@ type LayoutProps = {
 export const TitleHot = styled.h2`
   font-size: 20px;
   font-weight: 500;
-  padding: 20px 13px 16px;
+  padding: 1px 13px 2px;
 `;
 export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   title,
@@ -38,14 +38,12 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
         <Header />
 
         <Slider />
-        <TitleHot>Top Hot Week</TitleHot>
+        {/* <TitleHot>Top Hot Week</TitleHot>
 
-        <RenderImgCategory />
-        <ButtonCategotyes />
+        <RenderImgCategory /> */}
+
         <NavBarModel count={count} />
-        <TitleHot>
-          {category ? `All videos category ${category}` : "Подборка Для Вас"}
-        </TitleHot>
+
         <List>{children}</List>
       </>
     </>

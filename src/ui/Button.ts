@@ -37,4 +37,11 @@ export const ButtonBy = styled.button`
   }
 `;
 
+export const ButtonNext = styled(ButtonBy)`
+  background-image: linear-gradient(90deg,#cfecd0,#0072ff);
+  color: white;
+`
+export const ButtonDelete = styled(ButtonBy)`
+  background-image: linear-gradient(90deg,#cfecd0,#e40014);
+`
 export const LinkStyle = { listStyle: "none", textDecoration: "none", color: "#005bff" };
