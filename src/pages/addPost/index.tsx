@@ -6,7 +6,7 @@ import { LinkStyle } from "@/ui/Button";
 import { WrapperForm } from "@/ui/Wrraper";
 import { CategoryForm } from "@/components/CategoryForm";
 import styled from "styled-components";
-import { UploadVideo } from "@/api/upload";
+import { UploadPrivRes, UploadPrivVideo, UploadVideo } from "@/api/upload";
 import { FormInput } from "./inputIpload/FormInput";
 import axios from "axios";
 
@@ -48,6 +48,7 @@ export const TitleBlock = styled.h3`
 
 export default function AddPost() {
   const [text, setText] = React.useState("");
+  const [time, setTime] = React.useState("");
 
   const [title, setTitle] = React.useState("");
 
@@ -56,14 +57,14 @@ export default function AddPost() {
   const [imagePrivUrl, setImagePrivUrl] = React.useState(
     "https://sun6-22.userapi.com/impg/pdwHXcQiCSjKowQG55E27PcuxS7lmC412QrosQ/t-eWUSSE7kc.jpg?size=604x230&quality=96&sign=25b40681014d131a5aa344db5d08fd77&type=album"
   );
+  const [privVideo, setPrivVideo] = React.useState<any>("");
+  const [isLoadingPriv, setIsLoadingPriv] = React.useState<any>(false);
   const imputFileRef = React.useRef(null);
   const imputFilePrivRef = React.useRef(null);
 
-  const [addObj, setAddObj] = React.useState<any>({});
-
   const [isEdit, setIsEdit] = React.useState(true);
 
-  const { categoryFile, setCategoryFile } = React.useContext(CustomContext);
+  const { categoryFile } = React.useContext(CustomContext);
 
   const newArrCategory =
     categoryFile &&
@@ -73,10 +74,14 @@ export default function AddPost() {
 
   const handleChangeFile = async (event: any) => {
     try {
+      setIsLoadingPriv(true);
       const formData = new FormData();
       const file = event.target.files[0];
       formData.append("image", file);
-      UploadVideo(formData).then((res) => setImageUrl(res));
+      UploadVideo(formData).then((res) => {
+        setImageUrl(res);
+        setIsLoadingPriv(false);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -98,13 +103,15 @@ export default function AddPost() {
         title,
         videoUrl: imageUrl.url,
         privUrl: imagePrivIpload.url,
+        privVideoUrl: privVideo.url,
         text,
+        time,
         category: newArrCategory ? newArrCategory.join(",") : "Hot",
         tags: "papa,mama",
         userId: "63f35e68a0bdef4345270f6e",
       };
 
-      await axios.post("http://45.12.239.183:4444/posts", fields);
+      await axios.post("http://45.12.73.85:4444/posts", fields);
 
       /* navigate(`/trx`); */
     } catch (error) {
@@ -116,20 +123,42 @@ export default function AddPost() {
   const onClickRemoveImage = () => {
     setImageUrl("");
   };
-  console.log(imageUrl);
 
-  const mySrc =
-    !imagePrivIpload && !imagePrivUrl
-      ? "https://sun6-22.userapi.com/impg/pdwHXcQiCSjKowQG55E27PcuxS7lmC412QrosQ/t-eWUSSE7kc.jpg?size=604x230&quality=96&sign=25b40681014d131a5aa344db5d08fd77&type=album"
-      : !imagePrivIpload && imagePrivUrl && imagePrivUrl;
+  const onSubmitVideoPriv = async () => {
+    try {
+      setIsLoadingPriv(true);
+      await UploadPrivVideo(`.${imageUrl.url}`, time).then((res) => {
+        setIsLoadingPriv(false);
+      });
+    } catch (error) {
+      console.log(error);
+      setIsLoadingPriv(false);
+      alert("Ошибка генерации пивью!");
+    }
+  };
+  const onSubmitVideoPrivResult = async () => {
+    try {
+      setIsLoadingPriv(true);
+      await UploadPrivRes().then((res) => {
+        setPrivVideo(res);
+        setIsLoadingPriv(false);
+      });
+    } catch (error) {
+      console.log(error);
+      setIsLoadingPriv(false);
+      alert("Ошибка генерации пивью!");
+    }
+  };
+  console.log(privVideo);
 
   return (
     <WrapperForm>
+      {isLoadingPriv && <h2 style={{ textAlign: "center" }}>Loading....</h2>}
       <ImgContainer>
         <ImgBlock
           src={
             imagePrivIpload
-              ? `http://45.12.239.183:4444${imagePrivIpload.url}`
+              ? `http://45.12.73.85:4444${imagePrivIpload.url}`
               : imagePrivUrl
           }
           alt="privImg"
@@ -141,7 +170,7 @@ export default function AddPost() {
         <FormInput
           imputFileRef={imputFileRef}
           handleChangeFile={handleChangeFile}
-          imageUrl={imputFileRef ? `http://45.12.239.183:4444${imageUrl}` : ""}
+          imageUrl={imputFileRef ? `http://45.12.73.85:4444${imageUrl}` : ""}
           onClickRemoveImage={onClickRemoveImage}
           setIsEdit={setIsEdit}
           handleChangeFilePriviu={handleChangeFilePriviu}
@@ -150,9 +179,14 @@ export default function AddPost() {
           setTitle={setTitle}
           text={text}
           setText={setText}
+          setTime={setTime}
+          time={time}
         />
       ) : (
-        <CategoryForm />
+        <CategoryForm
+          onSubmitVideoPriv={onSubmitVideoPriv}
+          onSubmitVideoPrivResult={onSubmitVideoPrivResult}
+        />
       )}
       <BtnBlock>
         <Button onClick={() => setIsEdit(true)}>Вернуться назад</Button>

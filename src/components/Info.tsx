@@ -1,18 +1,19 @@
 import styled from "styled-components";
-import { TItemProduct, TProducts } from "@/types/Product";
-import { ButtonBy, LinkStyle } from "@/ui/Button";
-import { AiOutlinePlayCircle } from "react-icons/ai";
+
+import { ButtonBy } from "@/ui/Button";
+
 import GetItem from "./GetItem";
 import { getAllProducts } from "@/api/products";
 import { useCallback, useEffect, useState } from "react";
-import { Header } from "./Header";
+
 import { NavBarModel } from "./NavBarModel";
 import { IPost } from "@/types/Post";
-import { ICategory } from "@/types/Catigories";
+
 import ReactPlayer from "react-player";
 import { getOneCategoryByName } from "@/api/categorys";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
+import { getRecommendationByCategory } from "@/api/recommendations";
 
 const Wrapper = styled.section`
   position: relative;
@@ -122,7 +123,7 @@ const IconBlock = styled.div`
 `;
 
 export const Info = (props: IPost) => {
-  const { title, text, videoUrl, viewsCount, category, tags } = props;
+  const { title, text, videoUrl, viewsCount, category, tags, _id } = props;
 
   const [post, setPost] = useState<IPost[]>();
   const [isCategoryId, setIsCategoryId] = useState<any>("");
@@ -131,9 +132,10 @@ export const Info = (props: IPost) => {
 
   useEffect(() => {
     if (!post) {
-      console.log("hi World");
       const resProduct = async () => {
-        return await getAllProducts().then((res) => setPost(res));
+        return await getRecommendationByCategory(category[0]).then((res) =>
+          setPost(res.filter((el) => el._id !== _id))
+        );
       };
       resProduct();
     }
@@ -143,8 +145,6 @@ export const Info = (props: IPost) => {
     }
   }, [isCategoryId]);
 
-  useCallback(() => {}, [isCategoryId]);
-
   const findIdCategory = async (name: string) => {
     try {
       await getOneCategoryByName(name).then((res) => setIsCategoryId(res));
@@ -152,20 +152,20 @@ export const Info = (props: IPost) => {
       console.log("Ошибка перехода в категорию");
     }
   };
-  console.log(isCategoryId);
+  console.log(post);
 
   return (
     <>
       <Wrapper>
         <ImageBlock>
           <ReactPlayer
-            height={450}
+            height={232}
             width={"100vw"}
             /* playing={true} */
             controls={true}
             loop={true}
             playsinline={true}
-            url={`http://45.12.239.183:4444${videoUrl}`}
+            url={`http://45.12.73.85:4444${videoUrl}`}
           />
           {/* <IconBlock>
             <AiOutlinePlayCircle />
@@ -177,11 +177,11 @@ export const Info = (props: IPost) => {
           <ListGroup>
             <List>
               <ListItem>
-                <b>Мiews:</b> {viewsCount}
+                <b>意见书:</b> {viewsCount}
               </ListItem>
 
               <ListItem>
-                <b>Category:</b>
+                <b>类别:</b>
                 {category
                   ? category.map((el, index) => {
                       return (
@@ -196,7 +196,7 @@ export const Info = (props: IPost) => {
                   : "Category"}
               </ListItem>
               <ListItem>
-                <b>Model:</b>
+                <b>模型:</b>
                 {tags
                   ? tags.map((el, index) => {
                       return <ModelStyles key={index}>{el}</ModelStyles>;
@@ -204,10 +204,10 @@ export const Info = (props: IPost) => {
                   : "tags"}
               </ListItem>
               <ListItem>
-                <b>Description:</b> {text}
+                <b>资料描述:</b> {text}
               </ListItem>
               <ListItem>
-                <b>tegs:</b>
+                <b>特格斯:</b>
 
                 {tags
                   ? tags.map((el, index) => {
@@ -222,8 +222,21 @@ export const Info = (props: IPost) => {
           </ListGroup>
         </div>
         <div>
-          <InfoTitle>Похожие видео</InfoTitle>
-          <GetItem post={post} />
+          <InfoTitle>相关影片</InfoTitle>
+          {post?.length ? (
+            <GetItem post={post} />
+          ) : (
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: 20,
+                fontWeight: 400,
+                marginBottom: 80,
+              }}
+            >
+              不幸的是，没有类似的视频这个视频！ 但我们正在努力 这个！
+            </p>
+          )}
         </div>
       </Wrapper>
       <NavBarModel />

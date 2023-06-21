@@ -1,9 +1,13 @@
-import { createContext, useState } from "react";
+import { searchPost } from "@/api/products";
+import { IPost } from "@/types/Post";
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 export const CustomContext = createContext<any>(null);
 
 export const Context = (props: any) => {
   // save in localStorage
-
+  const [search, setSearch] = useState("");
+  const [postsIsSearch, setPostsIsSearch] = useState<IPost[]>([]);
   const [likeArr, setLikeArr] = useState<string[]>([]);
   const [categoryFile, setCategoryFile] = useState<any>();
   const handelLike = (id: string, setIsLike: any) => {
@@ -22,6 +26,10 @@ export const Context = (props: any) => {
     handelDizLike,
     categoryFile,
     setCategoryFile,
+    search,
+    setSearch,
+    postsIsSearch,
+    setPostsIsSearch,
   };
 
   return (

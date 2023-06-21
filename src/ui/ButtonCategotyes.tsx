@@ -32,7 +32,7 @@ export const ButtonCategotyes = () => {
   return (
     <Container>
       <Link href="/category" style={LinkStyle}>
-        <Button>Все Категории</Button>
+        <Button>所有类别</Button>
       </Link>
     </Container>
   );

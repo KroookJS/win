@@ -29,6 +29,7 @@ export const CardImage = styled.img`
     height: 222px;
   }
 `;
+
 export const CardImageCategpry = styled.img`
   display: block;
   width: 100%;

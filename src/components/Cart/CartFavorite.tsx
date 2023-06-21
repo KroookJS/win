@@ -123,11 +123,11 @@ export const CartFavorite: FC<IPost> = ({
         </CartHeaderContainer>
       </CartHeader>
       <ReactPlayer
-        height={450}
+        height={232}
         width={"100vw"}
         controls={true}
         playsinline={true}
-        url={`http://45.12.239.183:4444${videoUrl}`}
+        url={`http://45.12.73.85:4444${videoUrl}`}
       />
       <CartBlock>
         <CartBlockDirection>

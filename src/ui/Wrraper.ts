@@ -79,16 +79,16 @@ export const WrapperArticle = styled.div`
   padding: 16px 0;
   border-radius: 25px;
 
-  &:hover {
+  /* &:hover {
     border: 1px solid var(--colors-btn);
-  }
+  } */
 `;
 
 export const WrapperArticleNewCategory = styled.div`
 position: relative;
-  &:hover {
+ /*  &:hover {
     border: 1px solid var(--colors-btn);
-  }
+  } */
 `
 
 
@@ -97,9 +97,9 @@ export const  WrapperArticleRecomendation = styled(WrapperArticle)`
  @media (min-width: 1024px) {
   max-height: 318px; 
   padding: 0rem 0.5rem;
-  &:hover {
+ /*  &:hover {
     border: 1px solid linear-gradient(to right top,#ffc600 20%,#ff0040,#e600cc 80%);
-  }
+  } */
  }
  
 `

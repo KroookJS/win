@@ -22,6 +22,10 @@ export const TitleHot = styled.h2`
   font-size: 20px;
   font-weight: 500;
   padding: 1px 13px 2px;
+
+  @media (min-width: 1040px) {
+    padding-left: 35px;
+  }
 `;
 export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   title,
@@ -37,14 +41,14 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
       <>
         <Header />
 
-        <Slider />
         {/* <TitleHot>Top Hot Week</TitleHot>
 
         <RenderImgCategory /> */}
 
         <NavBarModel count={count} />
 
-        <List>{children}</List>
+        {children}
+        <footer style={{ padding: 40 }}></footer>
       </>
     </>
   );

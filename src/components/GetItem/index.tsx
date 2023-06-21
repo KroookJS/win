@@ -16,12 +16,16 @@ export default function GetItem({
   post?: IPost[];
   cartType?: boolean;
 }) {
+  
+
   return (
     <TableDeskTop>
       {post
         ? post.map((post: IPost) => {
-            return (   
-                cartType ? <CartFavorite key={post._id} {...post} /> : <CartPost key={post._id} {...post} />
+            return cartType ? (
+              <CartFavorite key={post._id} {...post} />
+            ) : (
+              <CartPost key={post._id} {...post} />
             );
           })
         : "Hi"}

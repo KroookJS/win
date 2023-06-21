@@ -18,3 +18,9 @@ export const addPost = async (file: any): Promise<IPost> => {
 export async function getFavorite (id:string): Promise<IPost[]> {
     return (await axios.get(API_URL + `/posts?favorite=${id}`)).data;
 }
+
+
+
+export async function searchPost (search: string): Promise<IPost[]> {
+    return (await axios.get(API_URL + `/search/${search}`,))
+}

@@ -10,6 +10,7 @@ export interface IPost {
     user: string;
     videoUrl: string;
     privUrl: string;
+    privVideoUrl?: string;
     createdAt: string;
     updatedAt: string;
     __v: number;

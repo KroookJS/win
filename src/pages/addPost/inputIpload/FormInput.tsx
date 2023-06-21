@@ -15,7 +15,9 @@ type TProps = {
   title: string;
   setTitle: any;
   setText: any;
+  setTime: any;
   text: string;
+  time: string;
 };
 
 export const InputButtonBlock = styled.div`
@@ -37,7 +39,9 @@ export const FormInput: FC<TProps> = ({
   title,
   setTitle,
   setText,
+  setTime,
   text,
+  time,
 }) => {
   return (
     <div>
@@ -84,6 +88,12 @@ export const FormInput: FC<TProps> = ({
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Ведите description"
+        />
+        <h2>Video time!</h2>
+        <Input.TextArea
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          placeholder="Ведите time video in min"
         />
       </Form.Item>
 

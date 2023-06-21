@@ -20,6 +20,19 @@ const TitleHotNew = styled.h3`
   margin: 10px;
 `;
 
+const BlockVideo = styled.div`
+  width: 100%;
+
+  height: 184vw;
+  text-align: center;
+  margin: 20px auto 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background: #222222;
+  border-radius: 35px 35px 0 0;
+`;
+
 export default function Favorite() {
   const [favorite, setFavorite] = useState<IPost[]>();
 
@@ -37,13 +50,15 @@ export default function Favorite() {
   return (
     <>
       <Header />
-      <TitleHotNew>Ваши сохраненки</TitleHotNew>
+      <TitleHotNew>您保存的文件</TitleHotNew>
       {favorite ? (
         <GetItem post={favorite} cartType={true} />
       ) : (
-        <p>Favorite page</p>
+        <BlockVideo>
+          <p>添加一个视频到您的收藏夹开始观看这里</p>
+        </BlockVideo>
       )}
-      <div style={{ maxWidth: 250 }}></div>
+
       <NavBarModel />
     </>
   );

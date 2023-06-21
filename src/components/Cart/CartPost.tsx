@@ -1,4 +1,3 @@
-import { CardImage } from "@/ui/CartStyle";
 import { WrapperArticleRecomendation } from "@/ui/Wrraper";
 import React, { FC, useContext, useState } from "react";
 import styled from "styled-components";
@@ -35,15 +34,37 @@ const CardDesk = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
 `;
-const CardPrice = styled.h3`
-  margin: 0;
-  font-size: var(--fs-md);
-  font-weight: var(--fw-normal);
 
-  color: #51af74d1;
+const BlockVideoCart = styled.div`
+  position: relative;
+
+  height: 100%;
+
+  img {
+    position: relative;
+    z-index: 1;
+  }
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 0;
+    width: 105%;
+    height: auto;
+  }
+
+  &:hover {
+    video {
+      z-index: 2;
+      opacity: 1;
+    }
+  }
 `;
 
 const CartAvar = styled.img`
+  z-index: 1;
   border: 1px solid #fff;
   border-radius: 50px;
   width: 39px;
@@ -109,21 +130,19 @@ const IconBox = styled.div`
   display: flex;
 `;
 
-type TCartPost = {
-  post: IPost;
-};
 export const CartPost: FC<IPost> = ({
   _id,
   title,
-  videoUrl,
+  privVideoUrl,
   text,
   privUrl,
+  videoUrl,
   category,
   tags,
   viewsCount,
   user,
 }) => {
-  const { likeArr, handelLike, handelDizLike } = useContext(CustomContext);
+  const { handelLike, handelDizLike } = useContext(CustomContext);
   const [isLike, setIsLike] = useState(false);
 
   const styleIcon = {
@@ -149,8 +168,16 @@ export const CartPost: FC<IPost> = ({
           </div>
         </CartHeaderContainer>
       </CartHeader>
-      <Link href={`details/${_id}`}>
-        <CardImage alt={title} src={`http://45.12.239.183:4444${privUrl}`} />
+      <Link href={`/details/${_id}`}>
+        <BlockVideoCart>
+          <img alt={title} src={`http://45.12.73.85:4444${privUrl}`} />
+          <video
+            loop
+            muted
+            autoPlay
+            src={`http://45.12.73.85:4444${privVideoUrl}`}
+          />
+        </BlockVideoCart>
       </Link>
       <CartBlock>
         <CartBlockDirection>

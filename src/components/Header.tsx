@@ -1,17 +1,12 @@
-import React from "react";
-import { Container, ContainerHeader } from "../ui/container";
-import { GiHamburgerMenu } from "react-icons/gi";
+import React, { useContext } from "react";
+import { ContainerHeader } from "../ui/container";
+
 import { BsFillSearchHeartFill } from "react-icons/bs";
 import Link from "next/link";
-import {
-  CartPrice,
-  HeaderEl,
-  Logo,
-  ModeCart,
-  WrapperHeader,
-} from "@/ui/HeaderStyles";
+import { HeaderEl, ModeCart, WrapperHeader } from "@/ui/HeaderStyles";
 import { LinkStyle } from "@/ui/Button";
 import styled from "styled-components";
+import { CustomContext } from "@/contrex/TasksProvider";
 
 const LogoColor = styled.h2`
   font-size: 24px;
@@ -31,15 +26,20 @@ const InputSearch = styled.input`
 `;
 
 export const Header = () => {
+  const { search, setSearch } = useContext(CustomContext);
   return (
     <HeaderEl>
       <ContainerHeader>
         <WrapperHeader>
           <Link style={LinkStyle} href="/">
-            <LogoColor>ON</LogoColor>
+            <LogoColor>色情</LogoColor>
           </Link>
 
-          <InputSearch placeholder="search for...." />
+          <InputSearch
+            placeholder="search for...."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <div
             style={{
               display: "flex",

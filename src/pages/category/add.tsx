@@ -7,10 +7,14 @@ import { LinkStyle } from "@/ui/Button";
 import { InputButtonBlock } from "../addPost/inputIpload/FormInput";
 import { UploadVideo } from "@/api/upload";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Add() {
   const [imageCategoty, setImageCategoty] = useState<any>("");
   const [title, setTitle] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+
+  const router = useRouter();
 
   const imputFileRef = React.useRef<any>(null);
 
@@ -25,16 +29,17 @@ export default function Add() {
     }
   };
 
+  const imageCategoryUrl = imgUrl ? imgUrl : imageCategoty.url;
   const onSubmit = async () => {
     try {
       const fields = {
         category: title,
-        imageCategoryUrl: imageCategoty.url,
+        imageCategoryUrl: imageCategoryUrl,
       };
 
-      await axios.post("http://45.12.239.183/category", fields);
+      await axios.post("http://45.12.73.85:4444/category", fields);
 
-      /* navigate(`/trx`); */
+      router.push(`/category/add`);
     } catch (error) {
       console.log(error);
       alert("Ошибка при создании поста!");
@@ -47,8 +52,8 @@ export default function Add() {
         <ImgBlock
           src={
             imageCategoty
-              ? `http://45.12.239.183:4444${imageCategoty.url}`
-              : "imagePrivUrl"
+              ? `http://45.12.73.85:4444${imageCategoty.url}`
+              : "https://pro-dachnikov.com/uploads/posts/2023-01/1673559754_pro-dachnikov-com-p-meiko-andrei-vasilevich-mnogo-mebeli-foto-24.png"
           }
           alt="privImg"
         />
@@ -67,6 +72,13 @@ export default function Add() {
         />
       </InputButtonBlock>
 
+      <Form.Item name={["imgUrl", "imgUrl"]}>
+        <Input
+          placeholder="Ведите urlImg"
+          value={imgUrl}
+          onChange={(e) => setImgUrl(e.target.value)}
+        />
+      </Form.Item>
       <Form.Item name={["title", "title"]} rules={[{ required: true }]}>
         <h2>Title: {title}</h2>
         <Input
@@ -80,11 +92,11 @@ export default function Add() {
           <Button>Вернуться назад</Button>
         </Link>
 
-        <Link href="/" style={LinkStyle}>
-          <Button size="large" onClick={onSubmit}>
-            Опубликовать
-          </Button>
-        </Link>
+        {/* <Link href="/" style={LinkStyle}> */}
+        <Button size="large" onClick={onSubmit}>
+          Опубликовать
+        </Button>
+        {/* </Link> */}
       </BtnBlock>
     </WrapperForm>
   );

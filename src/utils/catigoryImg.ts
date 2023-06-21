@@ -1,30 +1,30 @@
 export const catigoryImage = [
     {
       id: 0,
-      title: "Hart",
+      title: "本周",
       image:
         "https://img.365vidz.com/uploads/posts/2023-05/svodnaya-sestra-sygrala-s-parnem-v-ochko-i-poluchila-v-.webp",
-      href: '/categories/groceries',
+      href: '/random',
     },
     {
       id: 1,
-      title: "DB",
+      title: "本月份",
       image:
         "https://img.365vidz.com/uploads/posts/2023-05/seks-s-trenerom-ocharovatel-noy-hohanny-dzhoy-posle-sil.webp",
-      href: '/categories/womens-bags',
+      href: '/random',
     },
     {
       id: 2,
-      title: "Negr",
+      title: "年度最佳",
       image:
         "https://img.365vidz.com/uploads/posts/2023-05/tovarisch-posadil-milu-sobolov-na-her-i-snyal-na-telefo.webp",
-      href: '/categories/fragrances',
+      href: '/random',
     },
     {
       id: 3,
-      title: "Top 20 week",
+      title:"建议", 
       image:
         "https://img.365vidz.com/uploads/posts/2023-05/domashnee-porno-s-littl-endzhel-s-nastoyaschim-real-nym.webp",
-      href: '/categories/mens-shoes',
+      href: '/random',
     }
   ];

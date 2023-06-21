@@ -10,7 +10,7 @@ import { LinkStyle } from "@/ui/Button";
 import { CustomContext } from "@/contrex/TasksProvider";
 
 const NavBarModelConrainer = styled.div`
-  height: 55px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,7 +49,7 @@ const BtnUpload = styled.button`
 
 const iconStyle = {
   width: "35px",
-  fontSize: "27px",
+  fontSize: "24px",
   color: "#ccc",
 };
 
@@ -73,7 +73,7 @@ export const NavBarModel: FC<TProps> = () => {
       <Link href="/" style={LinkStyle}>
         <AiFillHome style={iconStyle} />
       </Link>
-      <Link href="category">
+      <Link href="/category">
         <BiCategoryAlt style={iconStyle} />
       </Link>
       <Link href="/addPost" style={LinkStyle}>

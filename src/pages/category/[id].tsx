@@ -3,27 +3,50 @@ import { getAllCategorys, getOneCategory } from "@/api/categorys";
 import React from "react";
 import { Layout } from "@/layout/Layout";
 import Link from "next/link";
-import { LinkStyle } from "@/ui/Button";
+import { ButtonDelete, LinkStyle } from "@/ui/Button";
 import { GetStaticProps } from "next/types";
 import { IPost } from "@/types/Post";
 import { CartPost } from "@/components/Cart/CartPost";
+import Head from "next/head";
 
 export default function CatigoryPage({ categories }: { categories: IPost[] }) {
-  console.log(categories);
+  
 
   return (
     <>
-      <Layout title="Category_id" category={categories[0].category[0]}>
-        {categories ? (
+      <Layout>
+        {categories.length ? (
           categories.map((catigory: IPost) => {
             return (
-              <Link href={`/details/${catigory._id}`} style={LinkStyle}>
+              <Link
+                key={catigory._id}
+                href={`/details/${catigory._id}`}
+                style={LinkStyle}
+              >
                 <CartPost key={catigory._id} {...catigory} />
               </Link>
             );
           })
         ) : (
-          <p>Loading category...</p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h3>不幸的是，没有此类别的视频</h3>
+            <h3>
+              您可以通过点击成为该类别的第一作者
+              上+
+            </h3>
+            <Link href="/category">
+              <ButtonDelete style={{ width: "80%" }}>
+              回去吧
+              </ButtonDelete>
+            </Link>
+          </div>
         )}
       </Layout>
     </>
