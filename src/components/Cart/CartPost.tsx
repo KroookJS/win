@@ -1,5 +1,5 @@
 import { WrapperArticleRecomendation } from "@/ui/Wrraper";
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useContext, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -144,10 +144,51 @@ export const CartPost: FC<IPost> = ({
 }) => {
   const { handelLike, handelDizLike } = useContext(CustomContext);
   const [isLike, setIsLike] = useState(false);
-
+  const [isTouch, setIsTouch] = useState(false);
+  const playerRef = useRef<any>(null);
   const styleIcon = {
     fontSize: "30px",
     color: "grey",
+  };
+  console.log(isTouch);
+
+  useEffect(() => {
+    if (isTouch) {
+      setTimeout(() => {
+        setIsTouch(false);
+      }, 10000);
+    }
+  }, [isTouch]);
+
+  /* function onMouseOver() { */
+  /* playerRef.current.videoRef.current.play(); */
+  /* if (playerRef !== null) { */
+  /*  playerRef.addEventListener("touchstart", () => {
+      setIsTouch(true);
+    }); */
+  /* } */
+  /* } */
+
+  /* useEffect(() => { */
+  /*     playerRef.current("touchstart", () => {
+      console.log('sdcdscds');
+    }); */
+  /* }, []); */
+  /*  useEffect(() => {
+    playerRef.current.addEventListener("touchstart", () => {
+      console.log("Пришел", isTouch);
+      setIsTouch(false);
+    });
+    playerRef.current.addEventListener("touchend", () => {
+      console.log("Ушел");
+      setIsTouch(false);
+    });
+  }, []); */
+  const onChangeTauch = () => {
+    if (isTouch) {
+      setIsTouch(false);
+    }
+    setIsTouch(true);
   };
 
   return (
@@ -169,12 +210,18 @@ export const CartPost: FC<IPost> = ({
         </CartHeaderContainer>
       </CartHeader>
       <Link href={`/details/${_id}`}>
-        <BlockVideoCart>
-          <img alt={title} src={`http://45.12.73.85:4444${privUrl}`} />
+        <BlockVideoCart ref={playerRef}>
+          <img
+            onTouchStart={onChangeTauch}
+            alt={title}
+            className="kaif"
+            src={`http://45.12.73.85:4444${privUrl}`}
+          />
           <video
             loop
             muted
             autoPlay
+            className={isTouch ? "active" : ""}
             src={`http://45.12.73.85:4444${privVideoUrl}`}
           />
         </BlockVideoCart>

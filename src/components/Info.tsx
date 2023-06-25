@@ -123,7 +123,8 @@ const IconBlock = styled.div`
 `;
 
 export const Info = (props: IPost) => {
-  const { title, text, videoUrl, viewsCount, category, tags, _id } = props;
+  const { title, text, videoUrl, viewsCount, category, tags, _id } =
+    props || {};
 
   const [post, setPost] = useState<IPost[]>();
   const [isCategoryId, setIsCategoryId] = useState<any>("");

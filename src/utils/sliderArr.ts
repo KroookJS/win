@@ -11,14 +11,14 @@ export const imgeSlider = [
       title: "smart",
       image:
         "http://wow.porno365.bond/uploads/posts/2023-05/3326-314510-1686-999o.webp",
-      href: '/details/6492e305379d48981ebb73b4', 
+      href: '/details/6492ce44f05a615d77a3aa00', 
     },
     {
       id: 2,
       title: "smart",
       image:
         "http://wow.porno365.bond/uploads/posts/2023-05/1586-553473-9138-999o.webp",
-      href: '/details/6492ce44f05a615d77a3aa00', 
+      href: '/details/649308294f1889a8d8163bd3', 
     },
     {
       id: 3,

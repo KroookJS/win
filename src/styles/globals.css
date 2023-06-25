@@ -91,3 +91,8 @@ b {
   justify-content: center;
   align-items: center;
 }
+
+.active {
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
