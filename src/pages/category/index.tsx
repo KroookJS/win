@@ -5,6 +5,8 @@ import { Layout, TitleHot } from "@/layout/Layout";
 import { ICategory } from "@/types/Catigories";
 import { LinkStyle } from "@/ui/Button";
 import Link from "next/link";
+import { TitleIconBlock } from "..";
+import { BiCategoryAlt } from "react-icons/bi";
 
 export default function CategoriesPage({
   categories,
@@ -14,7 +16,10 @@ export default function CategoriesPage({
   return (
     <>
       <Layout title="Category Page">
-        <TitleHot>选择类别</TitleHot>
+        <TitleIconBlock>
+          <BiCategoryAlt />
+          <TitleHot>Category</TitleHot>
+        </TitleIconBlock>
         {categories ? (
           categories.map((catigory: ICategory) => {
             return (
@@ -26,7 +31,7 @@ export default function CategoriesPage({
             );
           })
         ) : (
-          <p>装载量....</p>
+          <p>Loading....</p>
         )}
       </Layout>
     </>

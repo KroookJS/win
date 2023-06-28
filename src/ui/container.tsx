@@ -12,6 +12,16 @@ export const Container = styled.main`
   }
 `;
 
+export const ContainerStoris = styled(Container)`
+  flex-wrap: none;
+
+  display: flex;
+  justify-content: center;
+  gap: 17px;
+
+  overflow-x: auto;
+`;
+
 export const ContainerHeader = styled(Container)`
   max-width: var(--width-mx-project);
 `;

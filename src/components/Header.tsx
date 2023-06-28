@@ -19,7 +19,7 @@ const InputSearch = styled.input`
   border: none;
   padding: 18px;
   font-size: 16px;
-  width: 70%;
+  width: 55%;
   height: 30px;
   border-radius: 20px;
   background: #303b51;
@@ -32,7 +32,7 @@ export const Header = () => {
       <ContainerHeader>
         <WrapperHeader>
           <Link style={LinkStyle} href="/">
-            <LogoColor>色情</LogoColor>
+            <LogoColor>YouPorn</LogoColor>
           </Link>
 
           <InputSearch

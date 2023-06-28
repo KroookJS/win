@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const HeaderEl = styled.header`
   /* box-shadow: var(--shadow); */
-  padding: 2px 0 8px 0;
+  padding: 2px 0 4px 0;
   background: #192032;
   /* border-bottom: 1px solid var(--colors-btn); */
   display: flex;
   align-items: center;
   border-radius: 0 0 30px 30px;
+  margin-bottom: 10px;
   @media(min-width: 1020px){
     /* display: none; */
     margin-bottom: 10px;

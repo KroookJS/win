@@ -31,8 +31,8 @@ const NavBarModelConrainer = styled.div`
 `;
 
 const BtnUpload = styled.button`
-  height: 43px;
-  width: 45px;
+  height: 36px;
+  width: 38px;
   border: none;
   border-radius: 35px;
   background-image: linear-gradient(

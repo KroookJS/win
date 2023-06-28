@@ -14,6 +14,7 @@ export const CardTitle = styled.h3`
   text-align: start;
   font-weight: 400;
   color: white;
+  max-width: 100px;
 `;
 
 
