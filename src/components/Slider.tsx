@@ -15,11 +15,9 @@ import Stories from "react-insta-stories";
 import { useRouter } from "next/router";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-const SliderText = styled.h3``;
-
 const stories = [
   {
-    url: "http://localhost:4444/uploads/storis-1.mp4",
+    url: "http://45.12.73.121:4444/uploads/storis-1.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -30,7 +28,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/storis-2.mp4",
+    url: "http://45.12.73.121:4444/uploads/storis-2.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -41,7 +39,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-3.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-3.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -52,7 +50,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-4.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-4.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -63,7 +61,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-5.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-5.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -74,7 +72,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-6.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-6.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -85,7 +83,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-7.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-7.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -96,7 +94,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-8.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-8.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -107,7 +105,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-9.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-9.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -118,7 +116,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-10.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-10.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -129,7 +127,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-11.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-11.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -140,7 +138,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-12.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-12.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -151,7 +149,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-13.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-13.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -162,7 +160,7 @@ const stories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-14.mp4",
+    url: "http://45.12.73.121:4444/uploads/shorts-14.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -189,10 +187,10 @@ const StorisWrapper = styled.main`
 `;
 
 const ContanerClose = styled.div`
-position: absolute;
-right: "10px",
-top: "20px", 
-z-index: 1002,
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  z-index: 1002;
 `;
 const styleIconClose = {
   fontSize: "30px",
