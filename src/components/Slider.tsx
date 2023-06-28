@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from "react";
+/* import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, Keyboard } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import { Container } from "../ui/container";
-import { imgeSlider } from "@/utils/sliderArr";
+import { imgeSlider } from "@/utils/sliderArr"; */
 
 import Link from "next/link";
 
-import { TItemSlider } from "@/types/Slider";
-import { LinkStyle } from "@/ui/Button";
+/* import { TItemSlider } from "@/types/Slider";
+import { LinkStyle } from "@/ui/Button"; */
 import styled from "styled-components";
 
 import Stories from "react-insta-stories";
@@ -188,23 +188,27 @@ const StorisWrapper = styled.main`
   position: relative;
 `;
 
+const ContanerClose = styled.div`
+position: absolute;
+right: "10px",
+top: "20px", 
+z-index: 1002,
+`;
+const styleIconClose = {
+  fontSize: "30px",
+  zIndex: 1002,
+};
+
 export default function Slider() {
   const router = useRouter();
 
-  const styleIconClose = {
-    fontSize: 30,
-    position: "absolute",
-    right: 10,
-    top: 20,
-    zIndex: 1002,
-  };
   return (
     <>
       <StorisWrapper>
         <Link href="/">
-          <AiOutlineCloseCircle
-            style={styleIconClose} /* onClick={() => router.push("/")} */
-          />
+          <ContanerClose>
+            <AiOutlineCloseCircle style={styleIconClose} />
+          </ContanerClose>
         </Link>
         {/*  <Swiper
           navigation={true}

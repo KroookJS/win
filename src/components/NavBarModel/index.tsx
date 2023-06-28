@@ -1,7 +1,6 @@
 import React, { FC, useContext } from "react";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome, AiOutlinePlus } from "react-icons/ai";
 import { BiCategoryAlt } from "react-icons/bi";
-import { AiOutlinePlus } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import styled from "styled-components";
