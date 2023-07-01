@@ -1,20 +1,31 @@
 import { getAllCategorys, getOneCategory } from "@/api/categorys";
 
-import React from "react";
-import { Layout } from "@/layout/Layout";
+import React, { useContext } from "react";
+import { Layout, TitleHot } from "@/layout/Layout";
 import Link from "next/link";
 import { ButtonDelete, LinkStyle } from "@/ui/Button";
 import { GetStaticProps } from "next/types";
 import { IPost } from "@/types/Post";
 import { CartPost } from "@/components/Cart/CartPost";
-import Head from "next/head";
+
+import { TitleIconBlock } from "..";
+import { BiCategoryAlt } from "react-icons/bi";
+import { CustomContext } from "@/contrex/TasksProvider";
 
 export default function CatigoryPage({ categories }: { categories: IPost[] }) {
-  
+  const { categoryText } = useContext(CustomContext);
 
   return (
     <>
       <Layout>
+        <TitleIconBlock>
+          <BiCategoryAlt />
+
+          <TitleHot>Category</TitleHot>
+          <TitleHot style={{ color: "var(--colors-btn)" }}>
+            {categoryText}
+          </TitleHot>
+        </TitleIconBlock>
         {categories.length ? (
           categories.map((catigory: IPost) => {
             return (
@@ -37,14 +48,9 @@ export default function CatigoryPage({ categories }: { categories: IPost[] }) {
             }}
           >
             <h3>不幸的是，没有此类别的视频</h3>
-            <h3>
-              您可以通过点击成为该类别的第一作者
-              上+
-            </h3>
+            <h3>您可以通过点击成为该类别的第一作者 上+</h3>
             <Link href="/category">
-              <ButtonDelete style={{ width: "80%" }}>
-              回去吧
-              </ButtonDelete>
+              <ButtonDelete style={{ width: "80%" }}>回去吧</ButtonDelete>
             </Link>
           </div>
         )}

@@ -5,8 +5,8 @@ import {
   WrapperProfileColumn,
 } from "@/pages/profile";
 import { IPost } from "@/types/Post";
-import { TProducts } from "@/types/Product";
-import { Wrapper } from "@/ui/Wrraper";
+
+
 import React from "react";
 
 export default function CartColumnProfile({
@@ -26,7 +26,7 @@ export default function CartColumnProfile({
             return (
               <ImgPost
                 key={post._id}
-                src={`http://45.12.73.121:4444${post.privUrl}`}
+                src={`http://localhost:4444${post.privUrl}`}
                 alt="photo Profile"
               />
             );

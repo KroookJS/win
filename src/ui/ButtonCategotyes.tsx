@@ -12,7 +12,7 @@ const Button = styled.button`
   border: none;
   border-radius: var(--radii);
   background: var(--colors-btn);
-  color: var(--colors-bg);
+
   font-size: var(--fs-bg);
   font-weight: var(--fw-light);
 
@@ -24,15 +24,15 @@ const Button = styled.button`
     #62a75bab,
     #27b319 80%
   ); */
-  background-image: linear-gradient(90deg, #cfecd0, #ffc5ca);
-  color: #474242;
+  /* background-image: linear-gradient(90deg, #cfecd0, #ffc5ca); */
+  color: #000;
 `;
 
 export const ButtonCategotyes = () => {
   return (
     <Container>
       <Link href="/category" style={LinkStyle}>
-        <Button>所有类别</Button>
+        <Button>All Сategories</Button>
       </Link>
     </Container>
   );

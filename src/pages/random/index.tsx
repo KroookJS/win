@@ -15,9 +15,20 @@ export default function DetailsPage() {
   }, []);
   return (
     <Layout>
-      <h3 style={{ margin: 10, paddingBottom: 10, fontSize: 17 }}>
-        Подборка для вас
+      <h3
+        style={{
+          margin: 10,
+          paddingBottom: 10,
+          fontSize: 19,
+        }}
+      >
+        A selection especially for you.
+        <a style={{ color: "var(--colors-btn)", fontSize: 20 }}>
+          {" "}
+          Enjoy your viewing
+        </a>
       </h3>
+
       <GetItem post={postRec} />
     </Layout>
   );

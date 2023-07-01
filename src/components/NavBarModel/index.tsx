@@ -34,12 +34,13 @@ const BtnUpload = styled.button`
   width: 38px;
   border: none;
   border-radius: 35px;
-  background-image: linear-gradient(
+  /*  background-image: linear-gradient(
     to right top,
     #ffc600 20%,
     #62a75bab,
     #27b319 80%
-  );
+  ); */
+  background-image: var(--colors-line-hub);
   color: #fff;
   display: flex;
   align-items: center;
@@ -54,9 +55,10 @@ const iconStyle = {
 
 const IconCount = styled.div`
   border-radius: 46%;
-  background: #27b219;
+  background: var(--colors-btn);
   color: white;
-  padding: 0px 5px;
+  padding: 0px 6px;
+  font-size: 14px;
   position: absolute;
   top: 13px;
   right: -2px;

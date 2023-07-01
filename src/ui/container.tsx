@@ -12,7 +12,13 @@ export const Container = styled.main`
   }
 `;
 
-export const ContainerStoris = styled(Container)`
+export const ContainerStoris = styled.main`
+  max-height: 250px;
+  max-width: var(--width-mx);
+  margin: 10px auto;
+
+  padding: 0 0.7rem;
+
   flex-wrap: none;
 
   display: flex;
@@ -20,6 +26,9 @@ export const ContainerStoris = styled(Container)`
   gap: 17px;
 
   overflow-x: auto;
+  @media (min-width: 1024px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const ContainerHeader = styled(Container)`

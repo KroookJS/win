@@ -3,10 +3,11 @@ import { CategortiesItem } from "@/components/Categories/CategortiesItem";
 
 import { Layout, TitleHot } from "@/layout/Layout";
 import { ICategory } from "@/types/Catigories";
-import { LinkStyle } from "@/ui/Button";
-import Link from "next/link";
+
 import { TitleIconBlock } from "..";
 import { BiCategoryAlt } from "react-icons/bi";
+import { CategortiesImgList } from "@/components/Categories/RenderImgCategory/ListColumn";
+import { ImgMyTestKategory } from "@/components/Categories/ImgMyTestKategory";
 
 export default function CategoriesPage({
   categories,
@@ -20,19 +21,22 @@ export default function CategoriesPage({
           <BiCategoryAlt />
           <TitleHot>Category</TitleHot>
         </TitleIconBlock>
-        {categories ? (
-          categories.map((catigory: ICategory) => {
-            return (
-              <CategortiesItem
-                title={catigory.category}
-                imgUrl={catigory.imageCategoryUrl}
-                _id={catigory._id}
-              />
-            );
-          })
-        ) : (
-          <p>Loading....</p>
-        )}
+        <CategortiesImgList>
+          {categories ? (
+            categories.map((catigory: ICategory) => {
+              return (
+                <ImgMyTestKategory
+                  title={catigory.category}
+                  image={catigory.imageCategoryUrl}
+                  href={catigory._id}
+                  isCategory={true}
+                />
+              );
+            })
+          ) : (
+            <p>Loading....</p>
+          )}
+        </CategortiesImgList>
       </Layout>
     </>
   );

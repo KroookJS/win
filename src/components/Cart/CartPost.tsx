@@ -19,7 +19,7 @@ const CardTitle = styled.h3`
   color: #000;
   padding: 7px 14px 4px 7px;
   border: 1px solid;
-  background: white;
+  background: var(--colors-btn);
   border-radius: 20px 0px 34px 20px;
 `;
 
@@ -65,7 +65,7 @@ const BlockVideoCart = styled.div`
 
 const CartAvar = styled.img`
   z-index: 1;
-  border: 1px solid #fff;
+  border: 1.5px solid var(--colors-btn);
   border-radius: 50px;
   width: 39px;
   height: 39px;
@@ -94,11 +94,10 @@ const PlayBnt = styled.button`
   padding: 0.5rem 0.6rem;
   border: none;
   border-radius: 7px;
-  color: var(--colors-bg-cart);
-  color: var(--colors-bg-cart);
 
-  background-image: linear-gradient(90deg, #cfecd0, #ffc5ca);
-  color: #715f5f;
+  /* background-image: linear-gradient(90deg, #cfecd0, #ffc5ca); */
+  color: #000;
+  background: var(--colors-btn);
   font-weight: 600;
 `;
 
@@ -136,11 +135,6 @@ export const CartPost: FC<IPost> = ({
   privVideoUrl,
   text,
   privUrl,
-  videoUrl,
-  category,
-  tags,
-  viewsCount,
-  user,
 }) => {
   const { handelLike, handelDizLike } = useContext(CustomContext);
   const [isLike, setIsLike] = useState(false);
@@ -159,30 +153,7 @@ export const CartPost: FC<IPost> = ({
     }
   }, [isTouch]);
 
-  /* function onMouseOver() { */
-  /* playerRef.current.videoRef.current.play(); */
-  /* if (playerRef !== null) { */
-  /*  playerRef.addEventListener("touchstart", () => {
-      setIsTouch(true);
-    }); */
-  /* } */
-  /* } */
 
-  /* useEffect(() => { */
-  /*     playerRef.current("touchstart", () => {
-      console.log('sdcdscds');
-    }); */
-  /* }, []); */
-  /*  useEffect(() => {
-    playerRef.current.addEventListener("touchstart", () => {
-      console.log("Пришел", isTouch);
-      setIsTouch(false);
-    });
-    playerRef.current.addEventListener("touchend", () => {
-      console.log("Ушел");
-      setIsTouch(false);
-    });
-  }, []); */
   const onChangeTauch = () => {
     if (isTouch) {
       setIsTouch(false);
@@ -203,7 +174,7 @@ export const CartPost: FC<IPost> = ({
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <PlayBnt>97%</PlayBnt>
             <IconBox>
-              <BiDotsHorizontalRounded style={{ color: "grey" }} />
+              <BiDotsHorizontalRounded style={{ color: "var(--colors-btn)" }} />
             </IconBox>
           </div>
         </CartHeaderContainer>
@@ -214,14 +185,14 @@ export const CartPost: FC<IPost> = ({
             onTouchStart={onChangeTauch}
             alt={title}
             className="kaif"
-            src={`http://45.12.73.121:4444${privUrl}`}
+            src={`http://localhost:4444${privUrl}`}
           />
           <video
             loop
             muted
             autoPlay
             className={isTouch ? "active" : ""}
-            src={`http://45.12.73.121:4444${privVideoUrl}`}
+            src={`http://localhost:4444${privVideoUrl}`}
           />
         </BlockVideoCart>
       </Link>
@@ -235,11 +206,12 @@ export const CartPost: FC<IPost> = ({
           {isLike ? (
             <MdFavorite
               onClick={() => handelDizLike(_id, setIsLike)}
-              style={{ color: "red" }}
+              /* style={{ color: "red" }} */
             />
           ) : (
             <MdOutlineFavoriteBorder
               onClick={() => handelLike(_id, setIsLike)}
+              style={{ color: "var(--colors-btn)" }}
             />
           )}
         </CartBlockDisplay>

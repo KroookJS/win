@@ -3,7 +3,7 @@ import CartColumnProfile from "@/components/CartColumnProfile";
 import { Header } from "@/components/Header";
 import { NavBarModel } from "@/components/NavBarModel";
 import { IPost } from "@/types/Post";
-import { TProducts } from "@/types/Product";
+
 import React, { useEffect, useState } from "react";
 import { BsPostcard } from "react-icons/bs";
 import { MdFavorite } from "react-icons/md";

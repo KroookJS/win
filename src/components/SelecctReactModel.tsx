@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 
 import Select from "react-select";
 
@@ -8,7 +8,6 @@ import { colourOptions } from "@/utils/dataCategory";
 
 export const SelecctReactModel = () => {
   const [modelsServer, setModelsServer] = React.useState<IModel[]>();
-  const [catValue, setCatValue] = React.useState();
 
   React.useEffect(() => {
     const resCatServer = async () => {

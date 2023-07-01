@@ -17,7 +17,6 @@ const validateMessages = {
     range: "${label} must be between ${min} and ${max}",
   },
 };
-/* eslint-enable no-template-curly-in-string */
 
 const onFinish = (values: any) => {
   console.log(values);

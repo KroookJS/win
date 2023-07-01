@@ -6,15 +6,16 @@ import { List } from "@/components/Cart/List";
 import { CartPost } from "@/components/Cart/CartPost";
 import { RenderImgCategory } from "@/components/Categories/RenderImgCategory";
 import { ButtonCategotyes } from "@/ui/ButtonCategotyes";
-import Slider from "@/components/Slider";
+
 import { CustomContext } from "@/contrex/TasksProvider";
 import GetItem from "@/components/GetItem";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { Container, ContainerStoris } from "@/ui/container";
+
 import { MdVideoLibrary } from "react-icons/md";
 import { BiCategoryAlt } from "react-icons/bi";
 import { AiOutlineFire } from "react-icons/ai";
+import { NewShorts } from "@/components/NewShorts";
 
 const MainApp = styled.main`
   margin-top: 1px;
@@ -46,22 +47,9 @@ export const TitleIconBlock = styled.div`
   }
 `;
 
-const SortsImg = styled.img`
-  width: 30%;
-  height: 197px;
-  object-fit: cover;
-  border-radius: 20px;
-  border: 2px solid #f2ff07;
-  @media (min-width: 767px) {
-    height: 229px;
-  }
-  @media (min-width: 1040px) {
-    height: 249px;
-    border-radius: 20px;
-  }
-`;
+
 export default function Product({ posts }: { posts: IPost[] }) {
-  const { search, setSearch, postsIsSearch, setPostsIsSearch } =
+  const { search, postsIsSearch, setPostsIsSearch } =
     useContext(CustomContext);
   const router = useRouter();
 
@@ -83,33 +71,7 @@ export default function Product({ posts }: { posts: IPost[] }) {
               <MdVideoLibrary />
               <TitleHot>Shorts</TitleHot>
             </TitleIconBlock>
-            <ContainerStoris>
-              <SortsImg
-                src="https://onlyfans-info.ru/wp-content/uploads/2023/01/anastaisme_323022086_1575437399587760_8260458503731510441_n.jpg"
-                alt="storis"
-                onClick={() => router.push(`/stories`)}
-              />
-              <SortsImg
-                src="https://onlyfans-info.ru/wp-content/uploads/2023/01/anastaisme_326754889_1117791502222452_8529190043241787833_n.jpg"
-                alt="storis"
-                onClick={() => router.push(`/stories`)}
-              />
-              <SortsImg
-                src="https://onlyfans-info.ru/wp-content/uploads/2023/01/anastaisme_326130481_1263100134238494_1807503180631822380_n.jpg"
-                alt="storis"
-                onClick={() => router.push(`/stories`)}
-              />
-              <SortsImg
-                src="https://onlyfans-info.ru/wp-content/uploads/2023/01/anastaisme_324911125_659702399224226_7445916378436927465_n-1.jpg"
-                alt="storis"
-                onClick={() => router.push(`/stories`)}
-              />
-              <SortsImg
-                src="https://onlyfans-info.ru/wp-content/uploads/2023/01/anastaisme_320685816_844016983489867_3771791854009987770_n.jpg"
-                alt="storis"
-                onClick={() => router.push(`/stories`)}
-              />
-            </ContainerStoris>
+            <NewShorts />
             <MainApp>
               <TitleIconBlock>
                 <BiCategoryAlt />

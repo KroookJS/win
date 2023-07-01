@@ -41,7 +41,8 @@ img {
   /* --colors-btn: #005bff; */
   /* --colors-btn: #89e69ad3; */
   /* --colors-btn: #ec00f7c7; Фиалет */
-  --colors-btn: #27b119;
+  /* --colors-btn: #27b119; Зеленый */
+  --colors-btn: #ffa31a;
   --colors-line: linear-gradient(to left, #962d50 7%, #603a46, #3e383a 80%);
   --colors-line-new: linear-gradient(
     to right top,
@@ -49,6 +50,7 @@ img {
     #27b219,
     #27b219 88%
   );
+  --colors-line-hub: linear-gradient( to right top, #e5c75d 20%, #e19a2f, #ffa31a 80% );
   --colors-btn-border: 0000001b;
   --colors-btn-hover: #27b11973;
 

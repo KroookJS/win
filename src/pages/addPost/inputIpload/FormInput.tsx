@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { Button, Form, Input } from "antd";
+import { Form, Input } from "antd";
 import styled from "styled-components";
 import { ButtonBy, ButtonDelete, ButtonNext } from "@/ui/Button";
-import { ButtonCategotyes } from "@/ui/ButtonCategotyes";
+
 
 type TProps = {
   imputFileRef: any;
@@ -25,7 +25,6 @@ export const InputButtonBlock = styled.div`
   flex-direction: column;
   gap: 10px;
   align-items: center;
-  /* justify-content: space-between; */
 `;
 
 export const FormInput: FC<TProps> = ({

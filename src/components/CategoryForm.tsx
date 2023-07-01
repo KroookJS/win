@@ -1,6 +1,5 @@
 import React from "react";
 import { SelecctReactCategory } from "./SelecctReactCategory";
-import { SelecctReactModel } from "./SelecctReactModel";
 import styled from "styled-components";
 import { ButtonDelete, ButtonNext } from "@/ui/Button";
 

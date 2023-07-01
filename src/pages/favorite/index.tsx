@@ -1,16 +1,14 @@
 import { getFavorite } from "@/api/products";
-import { List } from "@/components/Cart/List";
+
 
 import GetItem from "@/components/GetItem";
 import { Header } from "@/components/Header";
 import { NavBarModel } from "@/components/NavBarModel";
 import { CustomContext } from "@/contrex/TasksProvider";
-import { Layout } from "@/layout/Layout";
 import { IPost } from "@/types/Post";
 
-import { TProducts } from "@/types/Product";
-import { CardTitle } from "@/ui/CartStyle";
 import React, { useContext, useEffect, useState } from "react";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import styled from "styled-components";
 
 const TitleHotNew = styled.h3`
@@ -36,8 +34,7 @@ const BlockVideo = styled.div`
 export default function Favorite() {
   const [favorite, setFavorite] = useState<IPost[]>();
 
-  const { likeArr, handelLike } = useContext(CustomContext);
-  console.log(likeArr);
+  const { likeArr} = useContext(CustomContext);
   useEffect(() => {
     const newId = likeArr.join(",");
     if (likeArr.length !== 0) {
@@ -50,12 +47,15 @@ export default function Favorite() {
   return (
     <>
       <Header />
-      <TitleHotNew>您保存的文件</TitleHotNew>
+      <TitleHotNew>Your saved videos</TitleHotNew>
       {favorite ? (
         <GetItem post={favorite} cartType={true} />
       ) : (
         <BlockVideo>
-          <p>添加一个视频到您的收藏夹开始观看这里</p>
+          <p>
+            Add a video to your favorites to start watching here{" "}
+            <MdOutlineFavoriteBorder style={{ color: "var(--colors-btn)", fontSize: 50 }} />
+          </p>
         </BlockVideo>
       )}
 

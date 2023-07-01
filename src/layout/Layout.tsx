@@ -1,17 +1,11 @@
 import Head from "next/head";
 import { Header } from "@/components/Header";
 import React, { useState } from "react";
-import Slider from "@/components/Slider";
-import { List } from "@/components/Cart/List";
-import { ButtonCategotyes } from "@/ui/ButtonCategotyes";
-import { RenderImgCategory } from "@/components/Categories/RenderImgCategory";
-import NavBar from "@/components/NavBar";
+
 import { NavBarModel } from "@/components/NavBarModel";
-import Title from "antd/es/skeleton/Title";
-import { CardTitle } from "@/ui/CartStyle";
+
 import styled from "styled-components";
-import { Context, CustomContext } from "@/contrex/TasksProvider";
-import SliderCategory from "@/components/Categories/SliderCategory";
+
 
 type LayoutProps = {
   title?: string;
@@ -29,7 +23,6 @@ export const TitleHot = styled.h2`
 `;
 export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   title,
-  category,
   children,
 }) => {
   const [count, setCount] = useState(0);

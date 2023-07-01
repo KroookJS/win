@@ -10,9 +10,12 @@ import { CustomContext } from "@/contrex/TasksProvider";
 
 const LogoColor = styled.h2`
   font-size: 24px;
-  color: var(--colors-btn);
+
   font-weight: 600;
-  padding: 0 0 0 5px;
+  padding: 9px;
+  background: var(--colors-btn);
+  border-radius: 30px;
+  margin-left: 2px;
 `;
 
 const InputSearch = styled.input`
@@ -23,6 +26,10 @@ const InputSearch = styled.input`
   height: 30px;
   border-radius: 20px;
   background: #303b51;
+
+  @media (max-width: 377px) {
+    width: 45%;
+  }
 `;
 
 export const Header = () => {
@@ -32,7 +39,10 @@ export const Header = () => {
       <ContainerHeader>
         <WrapperHeader>
           <Link style={LinkStyle} href="/">
-            <LogoColor>YouPorn</LogoColor>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <h2>You</h2>
+              <LogoColor>Porn</LogoColor>
+            </div>
           </Link>
 
           <InputSearch
@@ -49,7 +59,7 @@ export const Header = () => {
             }}
           >
             <BsFillSearchHeartFill
-              style={{ fontSize: 20, color: "rgb(39 178 25)" }}
+              style={{ fontSize: 20, color: "var(--colors-btn)" }}
             />
           </div>
         </WrapperHeader>
