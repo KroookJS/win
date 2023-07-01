@@ -153,7 +153,6 @@ export const Info = (props: IPost) => {
       console.log("Ошибка перехода в категорию");
     }
   };
-  
 
   return (
     <>
@@ -166,7 +165,7 @@ export const Info = (props: IPost) => {
             controls={true}
             loop={true}
             playsinline={true}
-            url={`http://localhost:4444${videoUrl}`}
+            url={`http://45.12.74.70:4444${videoUrl}`}
           />
           {/* <IconBlock>
             <AiOutlinePlayCircle />

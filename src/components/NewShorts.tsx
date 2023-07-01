@@ -79,7 +79,7 @@ export const NewShorts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4444/shorts")
+      .get("http://45.12.74.70:4444/shorts")
       .then((res) => setMyShorts(res.data));
   }, []);
 
@@ -91,7 +91,7 @@ export const NewShorts = () => {
             return (
               <SortsImg
                 key={index}
-                src={`http://localhost:4444${el.url}`}
+                src={`http://45.12.74.70:4444${el.url}`}
                 onClick={() => router.push(`/stories`)}
               />
             );
@@ -99,7 +99,7 @@ export const NewShorts = () => {
             return (
               <SortsNewImg
                 key={index}
-                src={`http://localhost:4444${el.url}`}
+                src={`http://45.12.74.70:4444${el.url}`}
                 onClick={() => router.push(`/stories`)}
               />
             );

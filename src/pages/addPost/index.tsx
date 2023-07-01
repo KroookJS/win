@@ -111,7 +111,7 @@ export default function AddPost() {
         userId: "63f35e68a0bdef4345270f6e",
       };
 
-      await axios.post("http://localhost:4444/posts", fields);
+      await axios.post("http://45.12.74.70:4444/posts", fields);
 
       /* navigate(`/trx`); */
     } catch (error) {
@@ -149,7 +149,6 @@ export default function AddPost() {
       alert("Ошибка генерации пивью!");
     }
   };
-  
 
   return (
     <WrapperForm>
@@ -158,7 +157,7 @@ export default function AddPost() {
         <ImgBlock
           src={
             imagePrivIpload
-              ? `http://localhost:4444${imagePrivIpload.url}`
+              ? `http://45.12.74.70:4444${imagePrivIpload.url}`
               : imagePrivUrl
           }
           alt="privImg"
@@ -170,7 +169,7 @@ export default function AddPost() {
         <FormInput
           imputFileRef={imputFileRef}
           handleChangeFile={handleChangeFile}
-          imageUrl={imputFileRef ? `http://localhost:4444${imageUrl}` : ""}
+          imageUrl={imputFileRef ? `http://45.12.74.70:4444${imageUrl}` : ""}
           onClickRemoveImage={onClickRemoveImage}
           setIsEdit={setIsEdit}
           handleChangeFilePriviu={handleChangeFilePriviu}

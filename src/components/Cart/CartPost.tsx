@@ -153,7 +153,6 @@ export const CartPost: FC<IPost> = ({
     }
   }, [isTouch]);
 
-
   const onChangeTauch = () => {
     if (isTouch) {
       setIsTouch(false);
@@ -185,14 +184,14 @@ export const CartPost: FC<IPost> = ({
             onTouchStart={onChangeTauch}
             alt={title}
             className="kaif"
-            src={`http://localhost:4444${privUrl}`}
+            src={`http://45.12.74.70:4444${privUrl}`}
           />
           <video
             loop
             muted
             autoPlay
             className={isTouch ? "active" : ""}
-            src={`http://localhost:4444${privVideoUrl}`}
+            src={`http://45.12.74.70:4444${privVideoUrl}`}
           />
         </BlockVideoCart>
       </Link>

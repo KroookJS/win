@@ -8,14 +8,14 @@ export default function DetailsPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4444/shorts")
+      .get("http://45.12.74.70:4444/shorts")
       .then((res) => setMyShorts(res.data));
   }, []);
   const newMyShorts = myShorts.map((el: any) => {
     if (el.url.includes("mp")) {
-      return { url: "http://localhost:4444" + el.url, type: "video" };
+      return { url: "http://45.12.74.70:4444" + el.url, type: "video" };
     } else {
-      return { url: "http://localhost:4444" + el.url };
+      return { url: "http://45.12.74.70:4444" + el.url };
     }
   });
   console.log(newMyShorts);

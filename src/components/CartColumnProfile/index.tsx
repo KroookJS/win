@@ -6,7 +6,6 @@ import {
 } from "@/pages/profile";
 import { IPost } from "@/types/Post";
 
-
 import React from "react";
 
 export default function CartColumnProfile({
@@ -26,7 +25,7 @@ export default function CartColumnProfile({
             return (
               <ImgPost
                 key={post._id}
-                src={`http://localhost:4444${post.privUrl}`}
+                src={`http://45.12.74.70:4444${post.privUrl}`}
                 alt="photo Profile"
               />
             );
