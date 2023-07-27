@@ -1,5 +1,10 @@
 import styles from "./HederSpotify.module.scss";
-import { AiOutlineSearch } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiOutlineLogin,
+  AiOutlineSearch,
+  AiTwotoneThunderbolt,
+} from "react-icons/ai";
 import { AiOutlineHome } from "react-icons/ai";
 import { FiZap } from "react-icons/fi";
 import { AiOutlineEllipsis } from "react-icons/ai";
@@ -7,6 +12,16 @@ import { BsCloudUpload } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import styled from "styled-components";
+import { LogoColor } from "../Header";
+import Link from "next/link";
+import { LinkStyle } from "@/ui/Button";
+import { BiCategoryAlt } from "react-icons/bi";
+import { PlusNavBar } from "../NavBarModel/ui/PlusNavBar";
+import { IconCount } from "../NavBarModel";
+import { CustomContext } from "@/contrex/TasksProvider";
+import { useContext } from "react";
+import { CgProfile } from "react-icons/cg";
+import { useRouter } from "next/router";
 
 const NavBarContainer = styled.div`
   max-width: 20%;
@@ -34,12 +49,12 @@ const NavBarContainer = styled.div`
 
   border-right: solid 1px rgba(245, 222, 179, 0.144);
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
 const NavBarContent = styled.div`
-  padding-top: 30px;
+  padding-top: 18px;
   padding-bottom: 10px;
   position: relative;
   max-width: 85%;
@@ -48,41 +63,24 @@ const NavBarContent = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Logo = styled.div`
-  cursor: pointer;
-  padding: 0 10px;
-  color: #28f64ea3;
-`;
-const NavBarTitle = styled.h2`
-  color: var(--colors-btn);
-`;
 const FlexText = styled.div`
   flex: 1;
 `;
-const FlexOne = styled.div`
-  flex: 1;
-`;
-const FlexTwo = styled.div`
-  flex: 2;
-`;
+
 const NavBarItem = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 const IconSearch = styled.div`
   display: flex;
   align-items: center;
   font-size: 17px;
 
-  margin-top: 15px;
-  padding: 10px;
+  margin-top: 7px;
+  padding: 0 10px;
 
   cursor: pointer;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
-`;
-
-const NavItemP = styled.p`
-  margin-left: 10px;
   &:hover {
     transform: scale(1.09);
     border-radius: 20px;
@@ -90,17 +88,12 @@ const NavItemP = styled.p`
     font-weight: 600;
   }
 `;
-const NavDownBLock = styled.div`
-  display: flex;
-  gap: 20px;
-  padding: 10px 2px;
-  border-bottom: 1px solid #fff;
-`;
 
-const NavUserkFooter = styled.div`
-  display: flex;
-  gap: 20px;
-  padding: 10px 2px;
+const NavItemP = styled.p`
+  margin-left: 10px;
+`;
+const NavDownBLock = styled.div`
+  /* border-bottom: 1px solid #fff; */
 `;
 
 function NavBar() {
@@ -108,68 +101,89 @@ function NavBar() {
     width: "30px",
     height: "30px",
   };
-
+  const { likeArr } = useContext(CustomContext);
+  const router = useRouter();
   return (
     <NavBarContainer>
       <NavBarContent>
         <FlexText>
-          <Logo>
-            <NavBarTitle /* style={{ color: "Highlight" }} */>
-              We Work
-            </NavBarTitle>
-          </Logo>
+          <Link href="/">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: "0 10px",
+              }}
+            >
+              <h2 style={{ fontSize: 20, cursor: "pointer" }}>Tele</h2>
+              <LogoColor>Porn</LogoColor>
+            </div>
+          </Link>
 
           <NavBarItem>
-            <IconSearch>
-              <AiOutlineSearch style={styleForPaper} />
-              <NavItemP>Profile</NavItemP>
-            </IconSearch>
-            <IconSearch>
-              <AiOutlineHome style={styleForPaper} />
-              <NavItemP>Home</NavItemP>
-            </IconSearch>
-            <IconSearch>
-              <FiZap style={styleForPaper} />
-              <NavItemP>YourLibary</NavItemP>
-            </IconSearch>
-
-            <IconSearch>
-              <MdOutlineFavoriteBorder style={styleForPaper} />
-              <NavItemP>FavoriteBrand</NavItemP>
-            </IconSearch>
+            <Link href="/" style={LinkStyle}>
+              <IconSearch>
+                <AiFillHome style={styleForPaper} />
+                <NavItemP>Home</NavItemP>
+              </IconSearch>
+            </Link>
           </NavBarItem>
-          <NavBarItem>
-            <IconSearch>
-              <AiOutlineSearch style={styleForPaper} />
-              <NavItemP>Profile</NavItemP>
-            </IconSearch>
-            <IconSearch>
-              <AiOutlineHome style={styleForPaper} />
-              <NavItemP>Home</NavItemP>
-            </IconSearch>
-            <IconSearch>
-              <FiZap style={styleForPaper} />
-              <NavItemP>YourLibary</NavItemP>
-            </IconSearch>
 
-            <IconSearch>
-              <MdOutlineFavoriteBorder style={styleForPaper} />
-              <NavItemP>FavoriteBrand</NavItemP>
-            </IconSearch>
+          <NavBarItem>
+            <Link href="/category">
+              <IconSearch>
+                <BiCategoryAlt style={styleForPaper} />
+                <NavItemP>Category</NavItemP>
+              </IconSearch>
+            </Link>
+            <Link href="/model">
+              <IconSearch>
+                <AiTwotoneThunderbolt style={styleForPaper} />
+                <NavItemP>Models</NavItemP>
+              </IconSearch>
+            </Link>
+
+            <Link href="/profile" style={LinkStyle}>
+              <IconSearch>
+                <CgProfile style={styleForPaper} />
+                <NavItemP>Profile</NavItemP>
+              </IconSearch>
+            </Link>
+
+            <Link href="/favorite">
+              <IconSearch>
+                <div style={{ position: "relative" }}>
+                  <MdOutlineFavoriteBorder style={styleForPaper} />
+                  <IconCount>{likeArr.length}</IconCount>
+                </div>
+
+                <NavItemP>Favorite</NavItemP>
+              </IconSearch>
+            </Link>
+            <Link href="/addPost">
+              <IconSearch>
+                <PlusNavBar />
+                <NavItemP>Upload</NavItemP>
+              </IconSearch>
+            </Link>
           </NavBarItem>
         </FlexText>
 
         <div>
-          <NavDownBLock>
-            <div>
-              <BsCloudUpload style={styleForPaper} />
-              <h5>Install App</h5>
-            </div>
-
-            <NavUserkFooter>
-              <AiOutlineUser style={styleForPaper} />
-              <h5>UserTime</h5>
-            </NavUserkFooter>
+          <NavDownBLock onClick={() => router.push("/auth")}>
+            <IconSearch>
+              <AiOutlineLogin
+                style={{
+                  fontSize: 35,
+                  color: "var(--colors-btn)",
+                  background: "#e3edf608",
+                  boxShadow: "0 0 10px",
+                  borderRadius: 30,
+                  padding: 5,
+                }}
+              />
+              <NavItemP>Login</NavItemP>
+            </IconSearch>
           </NavDownBLock>
         </div>
       </NavBarContent>

@@ -5,6 +5,7 @@ export interface IPost {
     title: string;
     text: string;
     category: string[];
+    model?: string[];
     tags: string[];
     viewsCount: number;
     user: string;
@@ -14,6 +15,8 @@ export interface IPost {
     createdAt: string;
     updatedAt: string;
     __v: number;
+    userAvatar?: string;
+    userName? : string;
 }
 
 export interface IPostFile {

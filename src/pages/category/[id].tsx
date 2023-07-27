@@ -12,12 +12,19 @@ import { TitleIconBlock } from "..";
 import { BiCategoryAlt } from "react-icons/bi";
 import { CustomContext } from "@/contrex/TasksProvider";
 
-export default function CatigoryPage({ categories }: { categories: IPost[] }) {
+import { QueryClient, dehydrate } from "react-query";
+import { BlockDescCategoryAndModal } from "../model/[id]";
+
+export default function CatigoryPage(props: any) {
   const { categoryText } = useContext(CustomContext);
+  const categories = props.dehydratedState.queries[0].state.data;
 
   return (
     <>
-      <Layout>
+      <Layout
+        title={`Porn Videos with Milfs: Free Sex Movies with ${categoryText} &#124; TelePorn`}
+        description={`Porn with ${categoryText} is here! On TelePorn.com you will find free porn videos with mature women who love to fuck. Sexy nude milfs with big tits do blowjob and swallow cum. Hot porn videos with scenes of anal sex and cum filling of milf pussies will pleasantly surprise you with sexy mature crumbs!`}
+      >
         <TitleIconBlock>
           <BiCategoryAlt />
 
@@ -26,34 +33,38 @@ export default function CatigoryPage({ categories }: { categories: IPost[] }) {
             {categoryText}
           </TitleHot>
         </TitleIconBlock>
-        {categories.length ? (
-          categories.map((catigory: IPost) => {
-            return (
-              <Link
-                key={catigory._id}
-                href={`/details/${catigory._id}`}
-                style={LinkStyle}
-              >
-                <CartPost key={catigory._id} {...catigory} />
+        <BlockDescCategoryAndModal>
+          {categories.length ? (
+            categories.map((catigory: IPost) => {
+              return (
+                <Link
+                  key={catigory._id}
+                  href={`/details/${catigory._id}`}
+                  style={LinkStyle}
+                >
+                  <CartPost key={catigory._id} {...catigory} />
+                </Link>
+              );
+            })
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <h3>Unfortunately, there are no videos in this category</h3>
+              <h3>
+                You can become the first author of the category by clicking on +
+              </h3>
+              <Link href="/category">
+                <ButtonDelete style={{ width: "80%" }}>Go Back</ButtonDelete>
               </Link>
-            );
-          })
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <h3>不幸的是，没有此类别的视频</h3>
-            <h3>您可以通过点击成为该类别的第一作者 上+</h3>
-            <Link href="/category">
-              <ButtonDelete style={{ width: "80%" }}>回去吧</ButtonDelete>
-            </Link>
-          </div>
-        )}
+            </div>
+          )}
+        </BlockDescCategoryAndModal>
       </Layout>
     </>
   );
@@ -81,16 +92,19 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   try {
     const cat = context.params ? context.params.id : "1";
-    const categories = await getOneCategory(String(cat));
+    const queryClient = new QueryClient();
+    await queryClient.prefetchQuery([`getOneCategory`, cat], async () =>
+      getOneCategory(String(cat))
+    );
 
-    if (!categories) {
+    if (!dehydrate(queryClient)) {
       return {
         notFound: true,
       };
     }
     return {
       props: {
-        categories,
+        dehydratedState: dehydrate(queryClient),
       },
     };
   } catch {

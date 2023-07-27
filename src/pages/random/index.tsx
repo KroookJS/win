@@ -1,18 +1,13 @@
 import { getRecommendation } from "@/api/recommendations";
 import GetItem from "@/components/GetItem";
+import { useShortsQuery } from "@/hooks/useShortsAndPostsQuery";
 import { Layout } from "@/layout/Layout";
-import { IPost } from "@/types/Post";
-import React, { useEffect, useState } from "react";
 
 export default function DetailsPage() {
-  const [postRec, setPostRec] = useState<IPost[]>();
-
-  useEffect(() => {
-    const resProduct = async () => {
-      return await getRecommendation().then((res) => setPostRec(res));
-    };
-    resProduct();
-  }, []);
+  const { data: postRec, isLoading } = useShortsQuery(
+    getRecommendation,
+    "getRecPosts"
+  );
   return (
     <Layout>
       <h3

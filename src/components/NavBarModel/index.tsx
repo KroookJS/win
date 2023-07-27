@@ -1,5 +1,9 @@
 import React, { FC, useContext } from "react";
-import { AiFillHome, AiOutlinePlus } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiOutlinePlus,
+  AiTwotoneThunderbolt,
+} from "react-icons/ai";
 import { BiCategoryAlt } from "react-icons/bi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
@@ -7,9 +11,10 @@ import styled from "styled-components";
 import Link from "next/link";
 import { LinkStyle } from "@/ui/Button";
 import { CustomContext } from "@/contrex/TasksProvider";
+import { PlusNavBar } from "./ui/PlusNavBar";
 
 const NavBarModelConrainer = styled.div`
-  height: 48px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +34,7 @@ const NavBarModelConrainer = styled.div`
   }
 `;
 
-const BtnUpload = styled.button`
+export const BtnUpload = styled.button`
   height: 36px;
   width: 38px;
   border: none;
@@ -53,7 +58,7 @@ const iconStyle = {
   color: "#ccc",
 };
 
-const IconCount = styled.div`
+export const IconCount = styled.div`
   border-radius: 46%;
   background: var(--colors-btn);
   color: white;
@@ -75,13 +80,9 @@ export const NavBarModel: FC<TProps> = () => {
         <AiFillHome style={iconStyle} />
       </Link>
       <Link href="/category">
-        <BiCategoryAlt style={iconStyle} />
+        <AiTwotoneThunderbolt style={iconStyle} />
       </Link>
-      <Link href="/addPost" style={LinkStyle}>
-        <BtnUpload>
-          <AiOutlinePlus />
-        </BtnUpload>
-      </Link>
+      <PlusNavBar />
       <Link href="/favorite">
         <div style={{ position: "relative" }}>
           <MdOutlineFavoriteBorder style={iconStyle} />

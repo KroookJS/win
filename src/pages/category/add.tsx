@@ -10,7 +10,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 export default function Add() {
-  const [imageCategoty, setImageCategoty] = useState<any>("");
+  const [imageCategoty, setImageCategoty] = useState("");
   const [title, setTitle] = useState("");
   const [imgUrl, setImgUrl] = useState("");
 
@@ -29,7 +29,7 @@ export default function Add() {
     }
   };
 
-  const imageCategoryUrl = imgUrl ? imgUrl : imageCategoty.url;
+  const imageCategoryUrl = imgUrl ? imgUrl : imageCategoty;
   const onSubmit = async () => {
     try {
       const fields = {
@@ -37,7 +37,7 @@ export default function Add() {
         imageCategoryUrl: imageCategoryUrl,
       };
 
-      await axios.post("http://45.12.74.70:4444/category", fields);
+      await axios.post("http://localhost:4444/category", fields);
 
       router.push(`/category/add`);
     } catch (error) {
@@ -52,7 +52,7 @@ export default function Add() {
         <ImgBlock
           src={
             imageCategoty
-              ? `http://45.12.74.70:4444${imageCategoty.url}`
+              ? `http://localhost:4444${imageCategoty}`
               : "https://pro-dachnikov.com/uploads/posts/2023-01/1673559754_pro-dachnikov-com-p-meiko-andrei-vasilevich-mnogo-mebeli-foto-24.png"
           }
           alt="privImg"

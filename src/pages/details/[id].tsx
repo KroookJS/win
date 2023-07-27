@@ -4,13 +4,22 @@ import { Info } from "@/components/Info";
 import { Header } from "@/components/Header";
 import { GetStaticProps } from "next";
 import { IPost } from "@/types/Post";
+import { Layout } from "@/layout/Layout";
+import ComponentIsLoading from "@/components/isLoadingComponents/ComponentIsLoading";
+import { useActivePage } from "@/hooks/useActivePage";
 
 export default function DetailsPage({ post }: { post: IPost }) {
-  return (
-    <div>
-      <Header />
-      {post ? <Info {...post} /> : <p>Loading Info...</p>}
-    </div>
+  const isActive = useActivePage();
+  return isActive ? (
+    <Layout
+      title={post.title}
+      description={post.text}
+      model={post.model ? post.model[0] : post.userName}
+      >
+      <Info {...post} />
+    </Layout>
+  ) : (
+    <ComponentIsLoading />
   );
 }
 

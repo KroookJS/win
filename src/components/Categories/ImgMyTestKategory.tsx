@@ -4,6 +4,9 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useContext } from "react";
 import { CustomContext } from "@/contrex/TasksProvider";
+import { TitleIconBlock } from "@/pages";
+import { BiCategoryAlt } from "react-icons/bi";
+import { TitleHot } from "@/layout/Layout";
 
 const TitleCategory = styled.h3`
   font-size: 17px;
@@ -25,7 +28,7 @@ const TitleCategory = styled.h3`
 
 const NewTitleCategory = styled.h3`
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   background: #010101a3;
   width: 100%;
   color: var(--colors-btn);
@@ -52,7 +55,7 @@ export const ImgMyTestKategory = ({
 }) => {
   const { setCategoryText } = useContext(CustomContext);
   return (
-    <Link href={!isCategory ? `${href}` : `category/${href}`}>
+    <Link href={isCategory ? `category/${href}` : `model/${href}`}>
       <WrapperArticleNewCategory onClick={() => setCategoryText(title)}>
         <CardImageCategpry alt={image} src={image} />
         {!isCategory ? (

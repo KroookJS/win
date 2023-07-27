@@ -1,3 +1,4 @@
+import { Layout } from "@/layout/Layout";
 import { ButtonBy, LinkStyle } from "@/ui/Button";
 import { Button, TextField, TextareaAutosize } from "@mui/material";
 import Link from "next/link";
@@ -5,15 +6,15 @@ import React from "react";
 
 export default function addTitle() {
   return (
-    <div>
+    <Layout>
       <TextareaAutosize />
       <TextField placeholder="Hi" />
       <Link href="/uploads" style={LinkStyle}>
-        <Button>Назад</Button>
+        <Button>Go Back</Button>
       </Link>
       <Link href="/uploads/AddCatigory" style={LinkStyle}>
-        <ButtonBy>Далее</ButtonBy>
+        <ButtonBy>Next</ButtonBy>
       </Link>
-    </div>
+    </Layout>
   );
 }

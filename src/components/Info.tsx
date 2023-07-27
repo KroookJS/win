@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-import { ButtonBy } from "@/ui/Button";
+import { ButtonNext } from "@/ui/Button";
 
 import GetItem from "./GetItem";
-import { getAllProducts } from "@/api/products";
-import { useCallback, useEffect, useState } from "react";
+
+import { useEffect, useState } from "react";
 
 import { NavBarModel } from "./NavBarModel";
 import { IPost } from "@/types/Post";
@@ -14,6 +14,10 @@ import { getOneCategoryByName } from "@/api/categorys";
 
 import { useRouter } from "next/router";
 import { getRecommendationByCategory } from "@/api/recommendations";
+import { AvatarBlock } from "./Cart/AvatarBlock";
+import { BsBodyText } from "react-icons/bs";
+import { MdOndemandVideo, MdOutlineTextRotateUp } from "react-icons/md";
+import { Layout } from "@/layout/Layout";
 
 const Wrapper = styled.section`
   position: relative;
@@ -23,7 +27,7 @@ const Wrapper = styled.section`
   width: 100%;
   display: grid;
   grid-template-columns: 100%;
-  gap: 2rem;
+  gap: 1rem;
 
   @media (min-width: 767px) {
     margin-top: 2.5rem;
@@ -49,9 +53,12 @@ const InfoImage = styled.img`
 
 const InfoTitle = styled.h1`
   margin: 0 auto;
-  padding: 0 0.5rem;
+  padding: 0 0 0.5rem 0.5rem;
   font-weight: var(--fw-normal);
   text-align: start;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 
 const ListGroup = styled.div`
@@ -75,7 +82,7 @@ const List = styled.ul`
 const ListItem = styled.li`
   line-height: 1.8;
   padding 0.3rem;
-
+  
   & > b {
     font-weight: var(--fw-bold);
   }
@@ -122,9 +129,30 @@ const IconBlock = styled.div`
   }
 `;
 
+const UserFolowBlock = styled.div`
+  display: flex;
+  aligtn-items: center;
+  gap: 50px;
+  padding: 0 4px;
+`;
+
+const BlockInfoShadow = styled.div`
+  filter: drop-shadow(153px -199px 123px #ffa31a);
+`;
 export const Info = (props: IPost) => {
-  const { title, text, videoUrl, viewsCount, category, tags, _id } =
-    props || {};
+  const {
+    title,
+    text,
+    videoUrl,
+    viewsCount,
+    category,
+    tags,
+    model,
+    _id,
+    user,
+    userAvatar,
+    userName,
+  } = props || {};
 
   const [post, setPost] = useState<IPost[]>();
   const [isCategoryId, setIsCategoryId] = useState<any>("");
@@ -165,23 +193,26 @@ export const Info = (props: IPost) => {
             controls={true}
             loop={true}
             playsinline={true}
-            url={`http://45.12.74.70:4444${videoUrl}`}
+            url={`http://localhost:4444${videoUrl}`}
           />
           {/* <IconBlock>
             <AiOutlinePlayCircle />
           </IconBlock> */}
         </ImageBlock>
 
-        <div>
-          <InfoTitle>{title}</InfoTitle>
+        <BlockInfoShadow>
+          <InfoTitle>
+            <MdOutlineTextRotateUp />
+            {title}
+          </InfoTitle>
           <ListGroup>
             <List>
               <ListItem>
-                <b>意见书:</b> {viewsCount}
+                <b>Views:</b> {viewsCount}
               </ListItem>
 
               <ListItem>
-                <b>类别:</b>
+                <b>Category:</b>
                 {category
                   ? category.map((el, index) => {
                       return (
@@ -196,18 +227,18 @@ export const Info = (props: IPost) => {
                   : "Category"}
               </ListItem>
               <ListItem>
-                <b>模型:</b>
-                {tags
-                  ? tags.map((el, index) => {
+                <b>Model:</b>
+                {model
+                  ? model.map((el, index) => {
                       return <ModelStyles key={index}>{el}</ModelStyles>;
                     })
-                  : "tags"}
+                  : "Model"}
               </ListItem>
               <ListItem>
-                <b>资料描述:</b> {text}
+                <b>Description:</b> {text}
               </ListItem>
               <ListItem>
-                <b>特格斯:</b>
+                <b>Tegs:</b>
 
                 {tags
                   ? tags.map((el, index) => {
@@ -215,14 +246,23 @@ export const Info = (props: IPost) => {
                     })
                   : "tags"}
               </ListItem>
-              <ListItem>
-                <ButtonBy>1131 $</ButtonBy>
-              </ListItem>
+              <UserFolowBlock>
+                <AvatarBlock
+                  user={user}
+                  userAvatar={userAvatar}
+                  userName={userName}
+                  isInfoBlock={true}
+                />
+                <ButtonNext>Subscribe</ButtonNext>
+              </UserFolowBlock>
             </List>
           </ListGroup>
-        </div>
+        </BlockInfoShadow>
         <div>
-          <InfoTitle>相关影片</InfoTitle>
+          <InfoTitle>
+            <MdOndemandVideo />
+            Related videos
+          </InfoTitle>
           {post?.length ? (
             <GetItem post={post} />
           ) : (
@@ -234,12 +274,12 @@ export const Info = (props: IPost) => {
                 marginBottom: 80,
               }}
             >
-              不幸的是，没有类似的视频这个视频！ 但我们正在努力 这个！
+              Unfortunately, there is no similar video for this video! But we
+              are working on it!
             </p>
           )}
         </div>
       </Wrapper>
-      <NavBarModel />
     </>
   );
 };

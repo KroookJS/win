@@ -1,29 +1,29 @@
+import { getAllShorts } from "@/api/shorts";
 import Slider from "@/components/Slider";
-import { myStories } from "@/utils/shorts";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import TestIsLoading from "@/components/TestIsLoading";
+import { useShortsQuery } from "@/hooks/useShortsAndPostsQuery";
+import { Layout } from "@/layout/Layout";
 
-export default function DetailsPage() {
-  const [myShorts, setMyShorts] = useState<any>([]);
+export default function Stories() {
+  const { data: myShorts, isSuccess } = useShortsQuery(
+    getAllShorts,
+    "getSorts"
+  );
 
-  useEffect(() => {
-    axios
-      .get("http://45.12.74.70:4444/shorts")
-      .then((res) => setMyShorts(res.data));
-  }, []);
-  const newMyShorts = myShorts.map((el: any) => {
-    if (el.url.includes("mp")) {
-      return { url: "http://45.12.74.70:4444" + el.url, type: "video" };
-    } else {
-      return { url: "http://45.12.74.70:4444" + el.url };
-    }
-  });
-  console.log(newMyShorts);
+  const newMyShorts =
+    isSuccess &&
+    myShorts.map((el: any) => {
+      if (el.url.includes("mp")) {
+        return { url: "http://localhost:4444" + el.url, type: "video" };
+      } else {
+        return { url: "http://localhost:4444" + el.url };
+      }
+    });
 
-  const MyCompLogik = myShorts.length ? (
+  const MyCompLogik = isSuccess ? (
     <Slider myStories={newMyShorts} />
   ) : (
-    <p>Загрузка</p>
+    <TestIsLoading />
   );
-  return MyCompLogik;
+  return <Layout isShorts={true}>{MyCompLogik}</Layout>;
 }

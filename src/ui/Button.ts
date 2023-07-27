@@ -31,15 +31,36 @@ export const ButtonBy = styled.button`
   /* background-image: linear-gradient( to right top, #ffc600 20%, #62a75bab, #27b319 80%); */
   background-image: linear-gradient(90deg, #cfecd0, #ffc5ca);
   color: #474242;
-  &:hover {
-    background: var(--colors-btn-hover);
-    border: 2px solid (--colors-btn-hover);
-  }
 `;
 
 export const ButtonNext = styled(ButtonBy)`
   background-image: linear-gradient(90deg,#cfecd0,#0072ff);
   color: white;
+  width: 93%;
+  display: flex;
+  font-size: 20px;
+  font-weight: 500;
+  justify-content: center;
+  margin: 15px auto;
+`
+
+export const ButtonCategoryPage = styled(ButtonNext)`
+  
+  background-image: linear-gradient(90deg,#080808,#49306b);
+  color: white;
+  border-radius: 6px;
+  box-shadow: 2px 2px 15px #c5a67cb8;
+  max-width: 200px;
+
+  position: absolute;
+    right: 24px;
+`
+
+export const CustomButtonPaginationNext = styled(ButtonCategoryPage)`
+  background-image: linear-gradient(90deg,#f8d265f2,#ffa31b);
+`
+export const CustomButtonPaginationBack = styled(ButtonCategoryPage)`
+  background-image: linear-gradient(270deg,#080808f2,#987b4f);
 `
 export const ButtonDelete = styled(ButtonBy)`
   background-image: linear-gradient(90deg,#cfecd0,#e40014);

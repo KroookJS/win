@@ -20,4 +20,9 @@ export type TProducts = {
 
 export type TChildren = {
     children: ReactNode;
-  };
+};
+
+export type TMarkup = {
+    children: ReactNode;
+    typePage?: boolean;
+}

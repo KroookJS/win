@@ -51,6 +51,7 @@ img {
     #27b219 88%
   );
   --colors-line-hub: linear-gradient( to right top, #e5c75d 20%, #e19a2f, #ffa31a 80% );
+  --colors-line-topChart: linear-gradient( to right top, #bab6a8 20%, #e5a3e1, #df73be 80% );
   --colors-btn-border: 0000001b;
   --colors-btn-hover: #27b11973;
 

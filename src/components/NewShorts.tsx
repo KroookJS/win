@@ -1,9 +1,11 @@
 import { ContainerStoris } from "@/ui/container";
-import { myStories } from "@/utils/shorts";
-import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { ReactDOM, useRef } from "react";
 import styled from "styled-components";
+import SceletonShorts from "./isLoadingComponents/SceletonShorts";
+import { getAllShorts } from "@/api/shorts";
+import { IShorts } from "@/types/Shorts";
+import { useShortsQuery } from "@/hooks/useShortsAndPostsQuery";
 
 const SortsImg = styled.video`
   width: 30%;
@@ -20,11 +22,11 @@ const SortsImg = styled.video`
     }
   }
 
-  @media (min-width: 557px) {
+  /*  @media (min-width: 557px) {
     &:nth-child(1) {
       margin-left: 0px;
     }
-  }
+  } */
 
   @media (min-width: 767px) {
     height: 229px;
@@ -34,7 +36,7 @@ const SortsImg = styled.video`
     height: 249px;
     border-radius: 20px;
     &:nth-child(1) {
-      margin-left: 0px;
+      margin-left: 20px;
     }
   }
 `;
@@ -54,11 +56,11 @@ const SortsNewImg = styled.img`
     }
   }
 
-  @media (min-width: 557px) {
+  /*  @media (min-width: 557px) {
     &:nth-child(1) {
-      margin-left: 0px;
+      margin-left: 80px;
     }
-  }
+  } */
 
   @media (min-width: 767px) {
     height: 229px;
@@ -68,44 +70,49 @@ const SortsNewImg = styled.img`
     height: 249px;
     border-radius: 20px;
     &:nth-child(1) {
-      margin-left: 0px;
+      margin-left: 20px;
     }
   }
 `;
 
 export const NewShorts = () => {
   const router = useRouter();
-  const [myShorts, setMyShorts] = useState<any>([]);
 
-  useEffect(() => {
-    axios
-      .get("http://45.12.74.70:4444/shorts")
-      .then((res) => setMyShorts(res.data));
-  }, []);
+  const windowWidth = useRef(window.innerWidth);
+
+  const { data: shorts, isLoading } = useShortsQuery(getAllShorts, "getShorts");
+
+  const arr =
+    windowWidth.current < 450
+      ? [...Array(3)].map((_, i) => <SceletonShorts key={i} />)
+      : [...Array(6)].map((_, i) => <SceletonShorts key={i} isHeight={true} />);
+
 
   return (
-    <div>
+    <>
       <ContainerStoris>
-        {myShorts.map((el: any, index: number) => {
-          if (el.type === "video") {
-            return (
-              <SortsImg
-                key={index}
-                src={`http://45.12.74.70:4444${el.url}`}
-                onClick={() => router.push(`/stories`)}
-              />
-            );
-          } else {
-            return (
-              <SortsNewImg
-                key={index}
-                src={`http://45.12.74.70:4444${el.url}`}
-                onClick={() => router.push(`/stories`)}
-              />
-            );
-          }
-        })}
+        {!isLoading && shorts
+          ? shorts.map((short: IShorts) => {
+              if (short.type === "video") {
+                return (
+                  <SortsImg
+                    key={short._id}
+                    src={`http://localhost:4444${short.url}`}
+                    onClick={() => router.push(`/stories`)}
+                  />
+                );
+              } else {
+                return (
+                  <SortsNewImg
+                    key={short._id}
+                    src={`http://localhost:4444${short.url}`}
+                    onClick={() => router.push(`/stories`)}
+                  />
+                );
+              }
+            })
+          : arr}
       </ContainerStoris>
-    </div>
+    </>
   );
 };

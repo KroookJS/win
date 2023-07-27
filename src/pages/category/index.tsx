@@ -1,51 +1,44 @@
 import { getAllCategorys } from "@/api/categorys";
-import { CategortiesItem } from "@/components/Categories/CategortiesItem";
 
-import { Layout, TitleHot } from "@/layout/Layout";
-import { ICategory } from "@/types/Catigories";
+import { Layout } from "@/layout/Layout";
 
-import { TitleIconBlock } from "..";
-import { BiCategoryAlt } from "react-icons/bi";
-import { CategortiesImgList } from "@/components/Categories/RenderImgCategory/ListColumn";
-import { ImgMyTestKategory } from "@/components/Categories/ImgMyTestKategory";
+import { CategoryTemplates } from "@/components/templates/CategoryTemplates";
+import { useActivePage } from "@/hooks/useActivePage";
+import ComponentIsLoading from "@/components/isLoadingComponents/ComponentIsLoading";
+import { QueryClient, dehydrate, useQuery } from "react-query";
+import { TopChart } from "@/components/Categories/TopChart";
 
-export default function CategoriesPage({
-  categories,
-}: {
-  categories: ICategory[];
-}) {
-  return (
-    <>
-      <Layout title="Category Page">
-        <TitleIconBlock>
-          <BiCategoryAlt />
-          <TitleHot>Category</TitleHot>
-        </TitleIconBlock>
-        <CategortiesImgList>
-          {categories ? (
-            categories.map((catigory: ICategory) => {
-              return (
-                <ImgMyTestKategory
-                  title={catigory.category}
-                  image={catigory.imageCategoryUrl}
-                  href={catigory._id}
-                  isCategory={true}
-                />
-              );
-            })
-          ) : (
-            <p>Loading....</p>
-          )}
-        </CategortiesImgList>
-      </Layout>
-    </>
+export default function CategoriesPage() {
+  const { data, isSuccess } = useQuery(
+    ["getCategory"],
+    async () => await getAllCategorys(),
+    {
+      keepPreviousData: true,
+      refetchOnMount: false,
+      refetchOnWindowFocus: true,
+    }
+  );
+  const newCat = isSuccess ? data : [];
+  const isActivePage = useActivePage();
+  return isActivePage ? (
+    <Layout
+      title="TelePorn Category: Find Your Favorite Free Hardcore Porn Videos"
+      description="TelePort has the best hardcore porn videos. Discover the latest XXX videos in your favorite sex category. Watch the hottest videos with pornstars starring."
+    >
+      <TopChart />
+      <CategoryTemplates categories={newCat} />
+    </Layout>
+  ) : (
+    <ComponentIsLoading />
   );
 }
 export async function getServerSideProps() {
-  const categories = await getAllCategorys();
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(["getPosts"], async () => getAllCategorys());
+
   return {
     props: {
-      categories,
+      dehydratedState: dehydrate(queryClient),
     },
   };
 }

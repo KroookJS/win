@@ -1,18 +1,18 @@
-import { TItemProduct } from "@/types/Product";
-import { CardBody, CardImage } from "@/ui/CartStyle";
-import { WrapperArticle, WrapperArticleRecomendation } from "@/ui/Wrraper";
-import React, { FC } from "react";
+import { WrapperArticleRecomendation } from "@/ui/Wrraper";
+import React, { FC, useContext, useState } from "react";
 import styled from "styled-components";
 
-import { BiDotsHorizontalRounded } from "react-icons/bi";
-import { MdFavorite } from "react-icons/md";
-import { AiOutlineComment } from "react-icons/ai";
+import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
+
 import Link from "next/link";
 import { IPost } from "@/types/Post";
 import ReactPlayer from "react-player";
+import { CustomContext } from "@/contrex/TasksProvider";
+import { ButtonCategoryPage } from "@/ui/Button";
+import { AvatarBlock } from "./AvatarBlock";
 
 const CardTitle = styled.h3`
-  margin: 0;
+  margin: 0 13px;
   /* font-size: var(--fs-md); */
   font-weight: var(--fw-middle);
   display: -webkit-box;
@@ -32,13 +32,6 @@ const CardDesk = styled.p`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`;
-const CardPrice = styled.h3`
-  margin: 0;
-  font-size: var(--fs-md);
-  font-weight: var(--fw-normal);
-
-  color: #51af74d1;
 `;
 
 const CartAvar = styled.img`
@@ -99,42 +92,60 @@ const CartHeaderName = styled.div`
 export const CartFavorite: FC<IPost> = ({
   title,
   videoUrl,
-  text,
-  category,
+  _id,
+  userAvatar,
+  userName,
+  user,
 }) => {
   const styleIcon = {
     fontSize: "30px",
     color: "grey",
   };
+  const [isLike, setIsLike] = useState(true);
+  const { likeArr, setLikeArr, handelDizLike } = useContext(CustomContext);
+
+  
+
+  
 
   return (
     <WrapperArticleRecomendation>
       <CartHeader>
         <CartHeaderContainer>
           <CartHeaderName>
-            <Link href="/profile">
-              <CartAvar src="https://yobte.ru/uploads/posts/2019-11/devushki-v-krasnom-plate-155-foto-82.jpg" />
-            </Link>
-            <CardDesk>Aly Fox</CardDesk>
+            <AvatarBlock
+              userAvatar={userAvatar}
+              userName={userName}
+              user={user}
+            />
           </CartHeaderName>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <PlayBnt>Open Full Post</PlayBnt>
+            <ButtonCategoryPage>Open a Post</ButtonCategoryPage>
           </div>
         </CartHeaderContainer>
       </CartHeader>
       <ReactPlayer
-        height={232}
-        width={"100vw"}
+        height={"77%"}
+        width={"100%"}
         controls={true}
         playsinline={true}
-        url={`http://45.12.74.70:4444${videoUrl}`}
+        url={`http://localhost:4444${videoUrl}`}
       />
       <CartBlock>
         <CartBlockDirection>
           <CardTitle>{title}</CardTitle>
         </CartBlockDirection>
         <CartBlockDisplay style={styleIcon}>
-          <MdFavorite style={{ color: "red" }} />
+          {isLike ? (
+            <MdFavorite
+              onClick={() => handelDizLike(_id, setIsLike)}
+              style={{ color: "orange" }}
+            />
+          ) : (
+            <MdOutlineFavoriteBorder
+              onClick={() => handelDizLike(_id, setIsLike)}
+            />
+          )}
         </CartBlockDisplay>
       </CartBlock>
     </WrapperArticleRecomendation>

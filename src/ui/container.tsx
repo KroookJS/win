@@ -26,6 +26,7 @@ export const ContainerStoris = styled.main`
   gap: 17px;
 
   overflow-x: auto;
+  filter: drop-shadow(-2px 4px 11px grey);
   @media (min-width: 1024px) {
     padding: 0 1rem;
   }

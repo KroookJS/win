@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { Layout } from "@/layout/Layout";
 import { LinkStyle } from "@/ui/Button";
 import { Wrapper } from "@/ui/Wrraper";
 import { Button, ButtonBase } from "@mui/material";
@@ -33,8 +34,7 @@ export default function Uploads() {
     "https://top-fon.com/uploads/posts/2023-01/1674696708_top-fon-com-p-kinolenta-fon-prezentatsii-199.jpg"
   );
   return (
-    <>
-      <Header />
+    <Layout>
       <Wrapper>
         <WrapperFlexColomn>
           <Link href="/" style={LinkStyle}>
@@ -61,6 +61,6 @@ export default function Uploads() {
           </Link>
         </WrapperFlexColomn>
       </Wrapper>
-    </>
+    </Layout>
   );
 }

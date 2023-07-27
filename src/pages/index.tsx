@@ -1,21 +1,24 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllProducts, searchPost } from "../api/products";
 import { IPost } from "@/types/Post";
 import { Layout, TitleHot } from "@/layout/Layout";
 import { List } from "@/components/Cart/List";
 import { CartPost } from "@/components/Cart/CartPost";
-import { RenderImgCategory } from "@/components/Categories/RenderImgCategory";
-import { ButtonCategotyes } from "@/ui/ButtonCategotyes";
+import { TopChart } from "@/components/Categories/TopChart";
 
 import { CustomContext } from "@/contrex/TasksProvider";
 import GetItem from "@/components/GetItem";
 import styled from "styled-components";
-import { useRouter } from "next/router";
 
 import { MdVideoLibrary } from "react-icons/md";
-import { BiCategoryAlt } from "react-icons/bi";
+
 import { AiOutlineFire } from "react-icons/ai";
 import { NewShorts } from "@/components/NewShorts";
+
+import { useRouter } from "next/router";
+import PaginationNavigete from "@/components/Pagination";
+import { useQuery, dehydrate, QueryClient } from "react-query";
+import PostIsLoading from "@/components/isLoadingComponents/PostIsLoading";
 
 const MainApp = styled.main`
   margin-top: 1px;
@@ -41,16 +44,31 @@ export const TitleIconBlock = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 1px 13px 2px;
+  padding: 4px 13px 2px;
   @media (min-width: 1040px) {
-    padding-left: 35px;
+    /* padding-left: 35px; */
+    display: block;
+    text-align: center;
   }
 `;
 
-
-export default function Product({ posts }: { posts: IPost[] }) {
-  const { search, postsIsSearch, setPostsIsSearch } =
+export default function Product() {
+  const { search, postsIsSearch, setPostsIsSearch, likeArr } =
     useContext(CustomContext);
+
+  const [page, setPage] = useState<any>(1);
+  const arr = [...Array(5)].map((_, i) => <PostIsLoading key={i} />);
+
+  const { data: posts, isLoading } = useQuery(
+    ["getPosts", page],
+    async () => await getAllProducts(page),
+    {
+      keepPreviousData: true,
+      refetchOnMount: false,
+      refetchOnWindowFocus: true,
+    }
+  );
+
   const router = useRouter();
 
   useEffect(() => {
@@ -62,23 +80,31 @@ export default function Product({ posts }: { posts: IPost[] }) {
     }
   }, [search]);
 
+  function handlePaginationChange(isBack: boolean) {
+    setPage((page: number) => page + 1);
+
+    router.push(`/?page=${page}`);
+  }
+  function handlePaginationChangeBack(isBack: boolean) {
+    setPage((page: number) => page - 1);
+
+    router.push(`/?page=${page}`) /* , undefined, { shallow: true } */;
+  }
+
   return (
     <>
-      <Layout title="pageProduct">
+      <Layout>
         {!search ? (
           <>
+            <TopChart />
             <TitleIconBlock>
               <MdVideoLibrary />
               <TitleHot>Shorts</TitleHot>
             </TitleIconBlock>
+
             <NewShorts />
             <MainApp>
-              <TitleIconBlock>
-                <BiCategoryAlt />
-                <TitleHot>Best videos</TitleHot>
-              </TitleIconBlock>
-              <RenderImgCategory />
-              <ButtonCategotyes />
+              {/* <ButtonCategotyes /> */}
               <TitleIconBlock>
                 <AiOutlineFire />
                 <TitleHot>Today's video</TitleHot>
@@ -90,25 +116,38 @@ export default function Product({ posts }: { posts: IPost[] }) {
         )}
 
         <List>
-          {posts && !search ? (
-            posts.map((post: IPost) => {
-              return <CartPost {...post} key={post._id} />;
-            })
-          ) : (
-            <GetItem post={postsIsSearch.data} />
-          )}
+          {posts && !isLoading && !search
+            ? posts.map((post: IPost) => {
+                return <CartPost {...post} key={post._id} />;
+              })
+            : arr}
         </List>
+        {/* <GetItem post={postsIsSearch.data} /> */}
+        <PaginationNavigete
+          handlePaginationChange={handlePaginationChange}
+          handlePaginationChangeBack={handlePaginationChangeBack}
+          curentPage={2}
+          total={50}
+        />
       </Layout>
     </>
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: any) {
   try {
-    const posts = await getAllProducts();
+    let page = "";
+    if (context.query.page) {
+      page = context.query.page;
+    }
+    const queryClient = new QueryClient();
+    await queryClient.prefetchQuery(["getPosts", page], async () =>
+      getAllProducts(page)
+    );
+
     return {
       props: {
-        posts,
+        dehydratedState: dehydrate(queryClient),
       },
     };
   } catch {

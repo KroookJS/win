@@ -1,28 +1,32 @@
 import React, { useContext } from "react";
 import { ContainerHeader } from "../ui/container";
 
-import { BsFillSearchHeartFill } from "react-icons/bs";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import { HeaderEl, ModeCart, WrapperHeader } from "@/ui/HeaderStyles";
+import { HeaderEl, WrapperHeader } from "@/ui/HeaderStyles";
 import { LinkStyle } from "@/ui/Button";
 import styled from "styled-components";
 import { CustomContext } from "@/contrex/TasksProvider";
+import { AiOutlineLogin } from "react-icons/ai";
 
-const LogoColor = styled.h2`
-  font-size: 24px;
+export const LogoColor = styled.h2`
+  font-size: 22px;
 
   font-weight: 600;
-  padding: 9px;
+  padding: 5px 8px;
   background: var(--colors-btn);
-  border-radius: 30px;
+  border-radius: 20px;
   margin-left: 2px;
+
+  box-shadow: 0 0 20px;
+  cursor: pointer;
 `;
 
 const InputSearch = styled.input`
   border: none;
   padding: 18px;
   font-size: 16px;
-  width: 55%;
+  width: 50%;
   height: 30px;
   border-radius: 20px;
   background: #303b51;
@@ -33,6 +37,7 @@ const InputSearch = styled.input`
 `;
 
 export const Header = () => {
+  const router = useRouter();
   const { search, setSearch } = useContext(CustomContext);
   return (
     <HeaderEl>
@@ -40,7 +45,7 @@ export const Header = () => {
         <WrapperHeader>
           <Link style={LinkStyle} href="/">
             <div style={{ display: "flex", alignItems: "center" }}>
-              <h2>You</h2>
+              <h2 style={{ fontSize: 20, cursor: "pointer" }}>Tele</h2>
               <LogoColor>Porn</LogoColor>
             </div>
           </Link>
@@ -58,8 +63,16 @@ export const Header = () => {
               paddingRight: 7,
             }}
           >
-            <BsFillSearchHeartFill
-              style={{ fontSize: 20, color: "var(--colors-btn)" }}
+            <AiOutlineLogin
+              onClick={() => router.push("/auth")}
+              style={{
+                fontSize: 35,
+                color: "var(--colors-btn)",
+                background: "#e3edf608",
+                boxShadow: "0 0 10px",
+                borderRadius: 30,
+                padding: 5,
+              }}
             />
           </div>
         </WrapperHeader>

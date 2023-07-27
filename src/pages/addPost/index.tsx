@@ -11,6 +11,7 @@ import { FormInput } from "./inputIpload/FormInput";
 import axios from "axios";
 
 import { CustomContext } from "@/contrex/TasksProvider";
+import { Layout } from "@/layout/Layout";
 
 export const BtnBlock = styled.div`
   display: flex;
@@ -53,22 +54,28 @@ export default function AddPost() {
   const [title, setTitle] = React.useState("");
 
   const [imageUrl, setImageUrl] = React.useState<any>("");
-  const [imagePrivIpload, setImagePrivIpload] = React.useState<any>("");
+  const [imagePrivIpload, setImagePrivIpload] = React.useState("");
   const [imagePrivUrl, setImagePrivUrl] = React.useState(
     "https://sun6-22.userapi.com/impg/pdwHXcQiCSjKowQG55E27PcuxS7lmC412QrosQ/t-eWUSSE7kc.jpg?size=604x230&quality=96&sign=25b40681014d131a5aa344db5d08fd77&type=album"
   );
-  const [privVideo, setPrivVideo] = React.useState<any>("");
+  const [privVideo, setPrivVideo] = React.useState("");
   const [isLoadingPriv, setIsLoadingPriv] = React.useState<any>(false);
   const imputFileRef = React.useRef(null);
   const imputFilePrivRef = React.useRef(null);
 
   const [isEdit, setIsEdit] = React.useState(true);
 
-  const { categoryFile } = React.useContext(CustomContext);
+  const { categoryFile, modelFile, userCook } = React.useContext(CustomContext);
 
   const newArrCategory =
     categoryFile &&
     categoryFile.map((el: any) => {
+      return el.value;
+    });
+
+  const newArrModel =
+    modelFile &&
+    modelFile.map((el: any) => {
       return el.value;
     });
 
@@ -77,6 +84,10 @@ export default function AddPost() {
       setIsLoadingPriv(true);
       const formData = new FormData();
       const file = event.target.files[0];
+      console.log("file", file);
+      console.log("event target", event.target);
+      console.log("event", event.timeStamp);
+
       formData.append("image", file);
       UploadVideo(formData).then((res) => {
         setImageUrl(res);
@@ -101,17 +112,20 @@ export default function AddPost() {
     try {
       const fields = {
         title,
-        videoUrl: imageUrl.url,
-        privUrl: imagePrivIpload.url,
-        privVideoUrl: privVideo.url,
+        videoUrl: imageUrl,
+        privUrl: imagePrivIpload,
+        privVideoUrl: privVideo,
         text,
         time,
         category: newArrCategory ? newArrCategory.join(",") : "Hot",
-        tags: "papa,mama",
-        userId: "63f35e68a0bdef4345270f6e",
+        model: newArrModel ? newArrModel.join(",") : "Hot",
+        tags: "Sex,PornTube,YouPorn,LovPorn,Teleporn",
+        userId: userCook ? userCook._id : "64aacd1ea8145397aabea5eb",
+        userAvatar: userCook && userCook.avatarUrl,
+        userName: userCook && userCook.fullName,
       };
 
-      await axios.post("http://45.12.74.70:4444/posts", fields);
+      await axios.post("http://localhost:4444/posts", fields);
 
       /* navigate(`/trx`); */
     } catch (error) {
@@ -127,10 +141,11 @@ export default function AddPost() {
   const onSubmitVideoPriv = async () => {
     try {
       setIsLoadingPriv(true);
-      await UploadPrivVideo(`.${imageUrl.url}`, time).then((res) => {
+      await UploadPrivVideo(`.${imageUrl}`, time).then((res) => {
         setIsLoadingPriv(false);
       });
     } catch (error) {
+      0;
       console.log(error);
       setIsLoadingPriv(false);
       alert("Ошибка генерации пивью!");
@@ -141,7 +156,11 @@ export default function AddPost() {
       setIsLoadingPriv(true);
       await UploadPrivRes().then((res) => {
         setPrivVideo(res);
-        setIsLoadingPriv(false);
+        if (res.length > 5) {
+          setIsLoadingPriv(false);
+        } else {
+          alert("Сгенирируйте еще раз!");
+        }
       });
     } catch (error) {
       console.log(error);
@@ -151,53 +170,55 @@ export default function AddPost() {
   };
 
   return (
-    <WrapperForm>
-      {isLoadingPriv && <h2 style={{ textAlign: "center" }}>Loading....</h2>}
-      <ImgContainer>
-        <ImgBlock
-          src={
-            imagePrivIpload
-              ? `http://45.12.74.70:4444${imagePrivIpload.url}`
-              : imagePrivUrl
-          }
-          alt="privImg"
-        />
-        <TitleBlock>{title ? title : "title"}</TitleBlock>
-      </ImgContainer>
+    <Layout>
+      <WrapperForm>
+        {isLoadingPriv && <h2 style={{ textAlign: "center" }}>Loading....</h2>}
+        <ImgContainer>
+          <ImgBlock
+            src={
+              imagePrivIpload
+                ? `http://localhost:4444${imagePrivIpload}`
+                : imagePrivUrl
+            }
+            alt="privImg"
+          />
+          <TitleBlock>{title ? title : "title"}</TitleBlock>
+        </ImgContainer>
 
-      {isEdit ? (
-        <FormInput
-          imputFileRef={imputFileRef}
-          handleChangeFile={handleChangeFile}
-          imageUrl={imputFileRef ? `http://45.12.74.70:4444${imageUrl}` : ""}
-          onClickRemoveImage={onClickRemoveImage}
-          setIsEdit={setIsEdit}
-          handleChangeFilePriviu={handleChangeFilePriviu}
-          imputFilePrivRef={imputFilePrivRef}
-          title={title}
-          setTitle={setTitle}
-          text={text}
-          setText={setText}
-          setTime={setTime}
-          time={time}
-        />
-      ) : (
-        <CategoryForm
-          onSubmitVideoPriv={onSubmitVideoPriv}
-          onSubmitVideoPrivResult={onSubmitVideoPrivResult}
-        />
-      )}
-      <BtnBlock>
-        <Button onClick={() => setIsEdit(true)}>Вернуться назад</Button>
-
-        {!isEdit && (
-          <Link href="/" style={LinkStyle}>
-            <Button size="large" variant="contained" onClick={onSubmit}>
-              Опубликовать
-            </Button>
-          </Link>
+        {isEdit ? (
+          <FormInput
+            imputFileRef={imputFileRef}
+            handleChangeFile={handleChangeFile}
+            imageUrl={imputFileRef ? `http://localhost:4444${imageUrl}` : ""}
+            onClickRemoveImage={onClickRemoveImage}
+            setIsEdit={setIsEdit}
+            handleChangeFilePriviu={handleChangeFilePriviu}
+            imputFilePrivRef={imputFilePrivRef}
+            title={title}
+            setTitle={setTitle}
+            text={text}
+            setText={setText}
+            setTime={setTime}
+            time={time}
+          />
+        ) : (
+          <CategoryForm
+            onSubmitVideoPriv={onSubmitVideoPriv}
+            onSubmitVideoPrivResult={onSubmitVideoPrivResult}
+          />
         )}
-      </BtnBlock>
-    </WrapperForm>
+        <BtnBlock>
+          <Button onClick={() => setIsEdit(true)}>Вернуться назад</Button>
+
+          {!isEdit && (
+            <Link href="/" style={LinkStyle}>
+              <Button size="large" variant="contained" onClick={onSubmit}>
+                Опубликовать
+              </Button>
+            </Link>
+          )}
+        </BtnBlock>
+      </WrapperForm>
+    </Layout>
   );
 }

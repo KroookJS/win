@@ -8,6 +8,7 @@ import { MdOutlineFavoriteBorder, MdFavorite } from "react-icons/md";
 import Link from "next/link";
 import { IPost } from "@/types/Post";
 import { CustomContext } from "@/contrex/TasksProvider";
+import { AvatarBlock, CardDesk } from "./AvatarBlock";
 
 const CardTitle = styled.h3`
   margin: 3px 0 0 0;
@@ -21,18 +22,6 @@ const CardTitle = styled.h3`
   border: 1px solid;
   background: var(--colors-btn);
   border-radius: 20px 0px 34px 20px;
-`;
-
-const CardDesk = styled.p`
-  margin: 7px 0 0 0;
-  font-size: var(--fs-md);
-  font-weight: var(--fw-me);
-  color: gray;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 `;
 
 const BlockVideoCart = styled.div`
@@ -61,15 +50,6 @@ const BlockVideoCart = styled.div`
       opacity: 1;
     }
   }
-`;
-
-const CartAvar = styled.img`
-  z-index: 1;
-  border: 1.5px solid var(--colors-btn);
-  border-radius: 50px;
-  width: 39px;
-  height: 39px;
-  object-fit: cover;
 `;
 
 const CartBlock = styled.div`
@@ -114,14 +94,6 @@ const CartHeaderContainer = styled.div`
   padding: 0 20px 0 0;
 `;
 
-const CartHeaderName = styled.div`
-  padding: 0.4rem 1rem;
-  display: flex;
-  align-items: center;
-
-  gap: 10px;
-`;
-
 const IconBox = styled.div`
   padding: 8px;
   background: #3030308f;
@@ -130,16 +102,22 @@ const IconBox = styled.div`
 `;
 
 export const CartPost: FC<IPost> = ({
+  userAvatar,
   _id,
   title,
   privVideoUrl,
   text,
   privUrl,
+  userName,
+  user,
 }) => {
-  const { handelLike, handelDizLike } = useContext(CustomContext);
+  const { likeArr, setLikeArr, handelDizLike, handelLike } =
+    useContext(CustomContext);
+
   const [isLike, setIsLike] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
   const playerRef = useRef<any>(null);
+
   const styleIcon = {
     fontSize: "30px",
     color: "grey",
@@ -160,18 +138,19 @@ export const CartPost: FC<IPost> = ({
     setIsTouch(true);
   };
 
+  const numberReitingRandom = Math.ceil(Math.random() * (99 - 69) + 69);
+
   return (
     <WrapperArticleRecomendation>
       <CartHeader>
         <CartHeaderContainer>
-          <CartHeaderName>
-            <Link href="/profile">
-              <CartAvar src="https://yobte.ru/uploads/posts/2019-11/devushki-v-krasnom-plate-155-foto-82.jpg" />
-            </Link>
-            <CardDesk>Maly Fox</CardDesk>
-          </CartHeaderName>
+          <AvatarBlock
+            userAvatar={userAvatar}
+            userName={userName}
+            user={user}
+          />
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <PlayBnt>97%</PlayBnt>
+            <PlayBnt>{numberReitingRandom}%</PlayBnt>
             <IconBox>
               <BiDotsHorizontalRounded style={{ color: "var(--colors-btn)" }} />
             </IconBox>
@@ -181,17 +160,19 @@ export const CartPost: FC<IPost> = ({
       <Link href={`/details/${_id}`}>
         <BlockVideoCart ref={playerRef}>
           <img
+            style={{ maxHeight: 202 }}
             onTouchStart={onChangeTauch}
             alt={title}
             className="kaif"
-            src={`http://45.12.74.70:4444${privUrl}`}
+            src={`http://localhost:4444${privUrl}`}
           />
           <video
+            style={{ maxHeight: 202, background: "black" }}
             loop
             muted
             autoPlay
             className={isTouch ? "active" : ""}
-            src={`http://45.12.74.70:4444${privVideoUrl}`}
+            src={`http://localhost:4444${privVideoUrl}`}
           />
         </BlockVideoCart>
       </Link>
@@ -204,8 +185,8 @@ export const CartPost: FC<IPost> = ({
         <CartBlockDisplay style={styleIcon}>
           {isLike ? (
             <MdFavorite
-              onClick={() => handelDizLike(_id, setIsLike)}
-              /* style={{ color: "red" }} */
+              /* onClick={() => handelDizLike(_id, setIsLike)} */
+              style={{ color: "orange" }}
             />
           ) : (
             <MdOutlineFavoriteBorder

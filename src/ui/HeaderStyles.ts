@@ -9,8 +9,8 @@ export const HeaderEl = styled.header`
   align-items: center;
   border-radius: 0 0 30px 30px;
   margin-bottom: 10px;
-  @media(min-width: 1020px){
-    /* display: none; */
+  @media(min-width: 1000px){
+    display: none;
     margin-bottom: 10px;
   }
 

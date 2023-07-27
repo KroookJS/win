@@ -1,15 +1,18 @@
-import { getFavorite } from "@/api/products";
-
+import ComponentIsLoading from "@/components/isLoadingComponents/ComponentIsLoading";
 
 import GetItem from "@/components/GetItem";
-import { Header } from "@/components/Header";
-import { NavBarModel } from "@/components/NavBarModel";
-import { CustomContext } from "@/contrex/TasksProvider";
-import { IPost } from "@/types/Post";
 
-import React, { useContext, useEffect, useState } from "react";
+import { CustomContext } from "@/contrex/TasksProvider";
+import { useActivePage } from "@/hooks/useActivePage";
+import { useCast, useFavoriteQuery } from "@/hooks/useShortsAndPostsQuery";
+import { Layout } from "@/layout/Layout";
+
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import styled from "styled-components";
+import { TopChart } from "@/components/Categories/TopChart";
+import { ListFavorite } from "@/components/GetItem/ListFavorite";
+import { IPost } from "@/types/Post";
 
 const TitleHotNew = styled.h3`
   font-size: 24px;
@@ -21,7 +24,7 @@ const TitleHotNew = styled.h3`
 const BlockVideo = styled.div`
   width: 100%;
 
-  height: 184vw;
+  height: 81vh;
   text-align: center;
   margin: 20px auto 0;
   align-items: center;
@@ -29,37 +32,49 @@ const BlockVideo = styled.div`
   justify-content: center;
   background: #222222;
   border-radius: 35px 35px 0 0;
+  @media (min-width: 1024px) {
+    height: 100vh;
+  }
+`;
+
+const PText = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 
 export default function Favorite() {
-  const [favorite, setFavorite] = useState<IPost[]>();
+  const isActivePage = useActivePage();
+  
 
-  const { likeArr} = useContext(CustomContext);
+  const { likeArr, copy, getFavoriteFromLs } = useContext(CustomContext);
+
+
+  const { data: favorite } = useCast(likeArr.join(","), "getfavorite");
+  
+
   useEffect(() => {
-    const newId = likeArr.join(",");
-    if (likeArr.length !== 0) {
-      const resFavorite = async () => {
-        return await getFavorite(newId).then((res) => setFavorite(res));
-      };
-      resFavorite();
-    }
+    getFavoriteFromLs();
   }, []);
-  return (
-    <>
-      <Header />
+
+  return isActivePage ? (
+    <Layout>
+      <TopChart />
       <TitleHotNew>Your saved videos</TitleHotNew>
       {favorite ? (
-        <GetItem post={favorite} cartType={true} />
+        <ListFavorite favorite={favorite} />
       ) : (
         <BlockVideo>
-          <p>
+          <PText>
             Add a video to your favorites to start watching here{" "}
-            <MdOutlineFavoriteBorder style={{ color: "var(--colors-btn)", fontSize: 50 }} />
-          </p>
+            <MdOutlineFavoriteBorder
+              style={{ color: "var(--colors-btn)", fontSize: 50 }}
+            />
+          </PText>
         </BlockVideo>
       )}
-
-      <NavBarModel />
-    </>
+    </Layout>
+  ) : (
+    <ComponentIsLoading />
   );
 }

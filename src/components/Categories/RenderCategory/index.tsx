@@ -1,17 +1,13 @@
 import React from "react";
-
 import { catigoryImage } from "@/utils/catigoryImg";
 import { TItemSlider } from "@/types/Slider";
 
-
-import { CategortiesImgList } from "./ListColumn";
+import { ListColumn } from "./ListColumn";
 import { ImgMyTestKategory } from "../ImgMyTestKategory";
 
-
-
-export const RenderImgCategory = () => {
+export const RenderCategory = () => {
   return (
-    <CategortiesImgList>
+    <ListColumn>
       {catigoryImage &&
         catigoryImage.map((img: TItemSlider) => {
           return (
@@ -22,6 +18,6 @@ export const RenderImgCategory = () => {
             />
           );
         })}
-    </CategortiesImgList>
+    </ListColumn>
   );
 };
