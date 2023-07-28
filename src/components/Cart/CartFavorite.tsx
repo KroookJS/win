@@ -104,10 +104,6 @@ export const CartFavorite: FC<IPost> = ({
   const [isLike, setIsLike] = useState(true);
   const { likeArr, setLikeArr, handelDizLike } = useContext(CustomContext);
 
-  
-
-  
-
   return (
     <WrapperArticleRecomendation>
       <CartHeader>
@@ -129,7 +125,7 @@ export const CartFavorite: FC<IPost> = ({
         width={"100%"}
         controls={true}
         playsinline={true}
-        url={`http://localhost:4444${videoUrl}`}
+        url={`http://37.1.219.168:4444${videoUrl}`}
       />
       <CartBlock>
         <CartBlockDirection>

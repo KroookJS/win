@@ -31,7 +31,6 @@ const AvaNameBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 `;
 
 const CartAvar = styled.img`
@@ -66,7 +65,7 @@ export const UsersItems = ({
             <CartAvar
               src={
                 userAvatar
-                  ? "http://localhost:4444" + userAvatar
+                  ? "http://37.1.219.168:4444" + userAvatar
                   : "https://static4.tgstat.ru/channels/_0/19/198d4555a01171d3b94bb61a37ba9aaf.jpg"
               }
             />

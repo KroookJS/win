@@ -87,7 +87,6 @@ export const NewShorts = () => {
       ? [...Array(3)].map((_, i) => <SceletonShorts key={i} />)
       : [...Array(6)].map((_, i) => <SceletonShorts key={i} isHeight={true} />);
 
-
   return (
     <>
       <ContainerStoris>
@@ -97,7 +96,7 @@ export const NewShorts = () => {
                 return (
                   <SortsImg
                     key={short._id}
-                    src={`http://localhost:4444${short.url}`}
+                    src={`http://37.1.219.168:4444${short.url}`}
                     onClick={() => router.push(`/stories`)}
                   />
                 );
@@ -105,7 +104,7 @@ export const NewShorts = () => {
                 return (
                   <SortsNewImg
                     key={short._id}
-                    src={`http://localhost:4444${short.url}`}
+                    src={`http://37.1.219.168:4444${short.url}`}
                     onClick={() => router.push(`/stories`)}
                   />
                 );

@@ -14,9 +14,9 @@ export default function Stories() {
     isSuccess &&
     myShorts.map((el: any) => {
       if (el.url.includes("mp")) {
-        return { url: "http://localhost:4444" + el.url, type: "video" };
+        return { url: "http://37.1.219.168:4444" + el.url, type: "video" };
       } else {
-        return { url: "http://localhost:4444" + el.url };
+        return { url: "http://37.1.219.168:4444" + el.url };
       }
     });
 

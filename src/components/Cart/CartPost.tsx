@@ -164,7 +164,7 @@ export const CartPost: FC<IPost> = ({
             onTouchStart={onChangeTauch}
             alt={title}
             className="kaif"
-            src={`http://localhost:4444${privUrl}`}
+            src={`http://37.1.219.168:4444${privUrl}`}
           />
           <video
             style={{ maxHeight: 202, background: "black" }}
@@ -172,7 +172,7 @@ export const CartPost: FC<IPost> = ({
             muted
             autoPlay
             className={isTouch ? "active" : ""}
-            src={`http://localhost:4444${privVideoUrl}`}
+            src={`http://37.1.219.168:4444${privVideoUrl}`}
           />
         </BlockVideoCart>
       </Link>

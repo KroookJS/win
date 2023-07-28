@@ -26,7 +26,7 @@ function ComponentIsLoading() {
       </div>
       <img
         style={{ width: 300, height: 600, borderRadius: 30 }}
-        src="http://localhost:4444/uploads/isLoading1.gif"
+        src="http://37.1.219.168:4444/uploads/isLoading1.gif"
         alt="loading"
       />
     </div>

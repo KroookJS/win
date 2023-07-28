@@ -48,8 +48,6 @@ const ImgTopList = styled.img`
     max-height: 100px;
     width: 169px;
   }
-
- 
 `;
 
 const TextTop = styled.h3`
@@ -108,7 +106,7 @@ export const TopVideosItem = ({
   return (
     <Link href={`/details/${href}`}>
       <WrapperTopChart>
-        <ImgTopList src={"http://localhost:4444" + image} />
+        <ImgTopList src={"http://37.1.219.168:4444" + image} />
         <TextTop>{title}</TextTop>
 
         <IndexBlock>{index}</IndexBlock>

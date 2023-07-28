@@ -53,7 +53,7 @@ export const HeaderProfile: FC<TProps> = ({
           <AvaCenter
             src={
               avatarUser
-                ? "http://localhost:4444" + avatarUser
+                ? "http://37.1.219.168:4444" + avatarUser
                 : userCook
                 ? userCook.avatarUrl
                 : "https://www.photoweb.ru/wp-content/uploads/2022/12/photo_2022-11-28_10-19-32.jpg"

@@ -8,7 +8,6 @@ import styled from "styled-components";
 import { ButtonCategoryPage, ButtonDelete, ButtonNext } from "@/ui/Button";
 import { UploadVideo } from "@/api/upload";
 
-
 export const FormBlock = styled.main`
   background-image: var(--colors-line-hub);
   border-radius: 30px 0px 30px 30px;
@@ -22,12 +21,10 @@ const AvaBlock = styled.img`
   border: 4px solid var(--colors-bg-cart);
 `;
 
-
 export const RegisterForm = () => {
   const [valueAvata, setValueAvatar] = useState("");
- 
+
   const inputRef = useRef<any>(null);
-  
 
   const handleChangeFileAvatar = async (event: any) => {
     try {
@@ -81,7 +78,7 @@ export const RegisterForm = () => {
         <AvaBlock
           src={
             valueAvata
-              ? "http://localhost:4444" + valueAvata
+              ? "http://37.1.219.168:4444" + valueAvata
               : "https://static4.tgstat.ru/channels/_0/19/198d4555a01171d3b94bb61a37ba9aaf.jpg"
           }
           alt="upload an avatar"

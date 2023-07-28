@@ -1,7 +1,7 @@
 export const myStories = [
     [
     {
-      url: "http://localhost:4444/uploads/storis-1.mp4",
+      url: "http://37.1.219.168:4444/uploads/storis-1.mp4",
       type: "video",
       
       duration: false,
@@ -14,7 +14,7 @@ export const myStories = [
       },
     },
     {
-      url: "http://localhost:4444/uploads/storis-2.mp4",
+      url: "http://37.1.219.168:4444/uploads/storis-2.mp4",
       type: "video",
       href: "/profile",
       header: {
@@ -25,7 +25,7 @@ export const myStories = [
       },
     },
     {
-      url: "http://localhost:4444/uploads/shorts-3.mp4",
+      url: "http://37.1.219.168:4444/uploads/shorts-3.mp4",
       type: "video",
       href: "/profile",
       header: {
@@ -36,7 +36,7 @@ export const myStories = [
       },
     },
     {
-      url: "http://localhost:4444/uploads/shorts-4.mp4",
+      url: "http://37.1.219.168:4444/uploads/shorts-4.mp4",
       type: "video",
       href: "/profile",
       header: {
@@ -55,7 +55,7 @@ export const myStories = [
 ],
 [
   {
-    url: "http://localhost:4444/uploads/shorts-5.mp4",
+    url: "http://37.1.219.168:4444/uploads/shorts-5.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -69,7 +69,7 @@ export const myStories = [
 [
   
   {
-    url: "http://localhost:4444/uploads/shorts-9.mp4",
+    url: "http://37.1.219.168:4444/uploads/shorts-9.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -80,7 +80,7 @@ export const myStories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-8.mp4",
+    url: "http://37.1.219.168:4444/uploads/shorts-8.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -93,7 +93,7 @@ export const myStories = [
 ],
 [
   {
-    url: "http://localhost:4444/uploads/shorts-6.mp4",
+    url: "http://37.1.219.168:4444/uploads/shorts-6.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -104,7 +104,7 @@ export const myStories = [
     },
   },
   {
-    url: "http://localhost:4444/uploads/shorts-7.mp4",
+    url: "http://37.1.219.168:4444/uploads/shorts-7.mp4",
     type: "video",
     href: "/profile",
     header: {
@@ -117,7 +117,7 @@ export const myStories = [
 ],
 [
     {
-      url: "http://localhost:4444/uploads/shorts-10.mp4",
+      url: "http://37.1.219.168:4444/uploads/shorts-10.mp4",
       type: "video",
       href: "/profile",
       header: {
@@ -128,7 +128,7 @@ export const myStories = [
       },
     },
     {
-      url: "http://localhost:4444/uploads/shorts-11.jpeg",
+      url: "http://37.1.219.168:4444/uploads/shorts-11.jpeg",
       href: "/profile",
       header: {
         heading: "Mohit Karekar",
@@ -138,7 +138,7 @@ export const myStories = [
       },
     },
     {
-      url: "http://localhost:4444/uploads/shorts-12.jpeg",
+      url: "http://37.1.219.168:4444/uploads/shorts-12.jpeg",
       href: "/profile",
       header: {
         heading: "Mohit Karekar",
@@ -148,7 +148,7 @@ export const myStories = [
       },
     },
     {
-      url: "http://localhost:4444/uploads/shorts-13.jpeg",
+      url: "http://37.1.219.168:4444/uploads/shorts-13.jpeg",
       href: "/profile",
       header: {
         heading: "Mohit Karekar",
@@ -158,7 +158,7 @@ export const myStories = [
       },
     },
     {
-      url: "http://localhost:4444/uploads/shorts-14.jpeg",
+      url: "http://37.1.219.168:4444/uploads/shorts-14.jpeg",
       href: "/profile",
       header: {
         heading: "Mohit Karekar",
