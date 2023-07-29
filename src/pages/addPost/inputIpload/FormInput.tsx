@@ -3,7 +3,6 @@ import { Form, Input } from "antd";
 import styled from "styled-components";
 import { ButtonBy, ButtonDelete, ButtonNext } from "@/ui/Button";
 
-
 type TProps = {
   imputFileRef: any;
   imputFilePrivRef: any;
@@ -43,7 +42,7 @@ export const FormInput: FC<TProps> = ({
   time,
 }) => {
   return (
-    <div>
+    <>
       <InputButtonBlock>
         <ButtonBy onClick={() => imputFileRef.current.click()}>
           Загрузить Video
@@ -97,7 +96,7 @@ export const FormInput: FC<TProps> = ({
       </Form.Item>
 
       <ButtonNext onClick={() => setIsEdit(false)}>Далее</ButtonNext>
-    </div>
+    </>
   );
 };
 

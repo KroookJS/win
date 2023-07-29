@@ -15,10 +15,10 @@ export const LogoColor = styled.h2`
   font-weight: 600;
   padding: 5px 8px;
   background: var(--colors-btn);
-  border-radius: 20px;
-  margin-left: 2px;
+  border-radius: 15px;
+  margin-left: 1px;
 
-  box-shadow: 0 0 20px;
+  /* box-shadow: 0 0 20px; */
   cursor: pointer;
 `;
 

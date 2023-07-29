@@ -170,55 +170,53 @@ export default function AddPost() {
   };
 
   return (
-    <Layout>
-      <WrapperForm>
-        {isLoadingPriv && <h2 style={{ textAlign: "center" }}>Loading....</h2>}
-        <ImgContainer>
-          <ImgBlock
-            src={
-              imagePrivIpload
-                ? `http://37.1.219.168:4444${imagePrivIpload}`
-                : imagePrivUrl
-            }
-            alt="privImg"
-          />
-          <TitleBlock>{title ? title : "title"}</TitleBlock>
-        </ImgContainer>
+    <WrapperForm>
+      {isLoadingPriv && <h2 style={{ textAlign: "center" }}>Loading....</h2>}
+      <ImgContainer>
+        <ImgBlock
+          src={
+            imagePrivIpload
+              ? `http://37.1.219.168:4444${imagePrivIpload}`
+              : imagePrivUrl
+          }
+          alt="privImg"
+        />
+        <TitleBlock>{title ? title : "title"}</TitleBlock>
+      </ImgContainer>
 
-        {isEdit ? (
-          <FormInput
-            imputFileRef={imputFileRef}
-            handleChangeFile={handleChangeFile}
-            imageUrl={imputFileRef ? `http://37.1.219.168:4444${imageUrl}` : ""}
-            onClickRemoveImage={onClickRemoveImage}
-            setIsEdit={setIsEdit}
-            handleChangeFilePriviu={handleChangeFilePriviu}
-            imputFilePrivRef={imputFilePrivRef}
-            title={title}
-            setTitle={setTitle}
-            text={text}
-            setText={setText}
-            setTime={setTime}
-            time={time}
-          />
-        ) : (
-          <CategoryForm
-            onSubmitVideoPriv={onSubmitVideoPriv}
-            onSubmitVideoPrivResult={onSubmitVideoPrivResult}
-          />
+      {isEdit ? (
+        <FormInput
+          imputFileRef={imputFileRef}
+          handleChangeFile={handleChangeFile}
+          imageUrl={imputFileRef ? `http://37.1.219.168:4444${imageUrl}` : ""}
+          onClickRemoveImage={onClickRemoveImage}
+          setIsEdit={setIsEdit}
+          handleChangeFilePriviu={handleChangeFilePriviu}
+          imputFilePrivRef={imputFilePrivRef}
+          title={title}
+          setTitle={setTitle}
+          text={text}
+          setText={setText}
+          setTime={setTime}
+          time={time}
+        />
+      ) : (
+        <CategoryForm
+          onSubmitVideoPriv={onSubmitVideoPriv}
+          onSubmitVideoPrivResult={onSubmitVideoPrivResult}
+        />
+      )}
+      <BtnBlock>
+        <Button onClick={() => setIsEdit(true)}>Вернуться назад</Button>
+
+        {!isEdit && (
+          <Link href="/" style={LinkStyle}>
+            <Button size="large" variant="contained" onClick={onSubmit}>
+              Опубликовать
+            </Button>
+          </Link>
         )}
-        <BtnBlock>
-          <Button onClick={() => setIsEdit(true)}>Вернуться назад</Button>
-
-          {!isEdit && (
-            <Link href="/" style={LinkStyle}>
-              <Button size="large" variant="contained" onClick={onSubmit}>
-                Опубликовать
-              </Button>
-            </Link>
-          )}
-        </BtnBlock>
-      </WrapperForm>
-    </Layout>
+      </BtnBlock>
+    </WrapperForm>
   );
 }
