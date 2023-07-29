@@ -106,7 +106,7 @@ export const TopVideosItem = ({
   return (
     <Link href={`/details/${href}`}>
       <WrapperTopChart>
-        <ImgTopList src={"http://37.1.219.168:4444" + image} />
+        <ImgTopList src={"http://45.9.42.130:4444" + image} />
         <TextTop>{title}</TextTop>
 
         <IndexBlock>{index}</IndexBlock>

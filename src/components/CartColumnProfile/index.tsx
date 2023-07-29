@@ -30,7 +30,7 @@ export default function CartColumnProfile({
         return (
           <Link key={post._id} href={`/details/${post._id}`} style={LinkStyle}>
             <ImgPost
-              src={`http://37.1.219.168:4444${post.privUrl}`}
+              src={`http://45.9.42.130:4444${post.privUrl}`}
               alt="photo Profile"
             />
           </Link>

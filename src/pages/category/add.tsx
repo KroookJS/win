@@ -37,7 +37,7 @@ export default function Add() {
         imageCategoryUrl: imageCategoryUrl,
       };
 
-      await axios.post("http://37.1.219.168:4444/category", fields);
+      await axios.post("http://45.9.42.130:4444/category", fields);
 
       router.push(`/category/add`);
     } catch (error) {
@@ -52,7 +52,7 @@ export default function Add() {
         <ImgBlock
           src={
             imageCategoty
-              ? `http://37.1.219.168:4444${imageCategoty}`
+              ? `http://45.9.42.130:4444${imageCategoty}`
               : "https://pro-dachnikov.com/uploads/posts/2023-01/1673559754_pro-dachnikov-com-p-meiko-andrei-vasilevich-mnogo-mebeli-foto-24.png"
           }
           alt="privImg"
