@@ -125,7 +125,7 @@ export default function AddPost() {
         userName: userCook && userCook.fullName,
       };
 
-      await axios.post("http://45.9.42.130:4444/posts", fields);
+      await axios.post("http://37.1.219.168:4444/posts", fields);
 
       /* navigate(`/trx`); */
     } catch (error) {
@@ -176,7 +176,7 @@ export default function AddPost() {
         <ImgBlock
           src={
             imagePrivIpload
-              ? `http://45.9.42.130:4444${imagePrivIpload}`
+              ? `http://37.1.219.168:4444${imagePrivIpload}`
               : imagePrivUrl
           }
           alt="privImg"
@@ -194,7 +194,7 @@ export default function AddPost() {
         <FormInput
           imputFileRef={imputFileRef}
           handleChangeFile={handleChangeFile}
-          imageUrl={imputFileRef ? `http://45.9.42.130:4444${imageUrl}` : ""}
+          imageUrl={imputFileRef ? `http://37.1.219.168:4444${imageUrl}` : ""}
           onClickRemoveImage={onClickRemoveImage}
           setIsEdit={setIsEdit}
           handleChangeFilePriviu={handleChangeFilePriviu}

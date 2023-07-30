@@ -78,7 +78,7 @@ export const RegisterForm = () => {
         <AvaBlock
           src={
             valueAvata
-              ? "http://45.9.42.130:4444" + valueAvata
+              ? "http://37.1.219.168:4444" + valueAvata
               : "https://static4.tgstat.ru/channels/_0/19/198d4555a01171d3b94bb61a37ba9aaf.jpg"
           }
           alt="upload an avatar"

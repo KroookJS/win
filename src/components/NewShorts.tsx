@@ -96,7 +96,7 @@ export const NewShorts = () => {
                 return (
                   <SortsImg
                     key={short._id}
-                    src={`http://45.9.42.130:4444${short.url}`}
+                    src={`http://37.1.219.168:4444${short.url}`}
                     onClick={() => router.push(`/stories`)}
                   />
                 );
@@ -104,7 +104,7 @@ export const NewShorts = () => {
                 return (
                   <SortsNewImg
                     key={short._id}
-                    src={`http://45.9.42.130:4444${short.url}`}
+                    src={`http://37.1.219.168:4444${short.url}`}
                     onClick={() => router.push(`/stories`)}
                   />
                 );
