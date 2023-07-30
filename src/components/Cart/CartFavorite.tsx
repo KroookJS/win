@@ -125,7 +125,7 @@ export const CartFavorite: FC<IPost> = ({
         width={"100%"}
         controls={true}
         playsinline={true}
-        url={`http://45.9.42.130:4444${videoUrl}`}
+        url={`http://37.1.219.168:4444${videoUrl}`}
       />
       <CartBlock>
         <CartBlockDirection>

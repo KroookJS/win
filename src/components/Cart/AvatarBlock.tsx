@@ -55,7 +55,7 @@ export const AvatarBlock = ({
           <CartAvar
             src={
               userAvatar
-                ? "http://45.9.42.130:4444" + userAvatar
+                ? "http://37.1.219.168:4444" + userAvatar
                 : "https://static4.tgstat.ru/channels/_0/19/198d4555a01171d3b94bb61a37ba9aaf.jpg"
             }
           />
