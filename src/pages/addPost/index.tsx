@@ -184,6 +184,12 @@ export default function AddPost() {
         <TitleBlock>{title ? title : "title"}</TitleBlock>
       </ImgContainer>
 
+      <input
+        placeholder="Ссылка на видео"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+      />
+
       {isEdit ? (
         <FormInput
           imputFileRef={imputFileRef}
