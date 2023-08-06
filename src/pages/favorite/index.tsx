@@ -13,7 +13,7 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { TopChart } from "@/components/Categories/TopChart";
 import { ListFavorite } from "@/components/GetItem/ListFavorite";
 
-import { BlockVideo, PText, TitleHotNew } from "./styled";
+import { BlockVideo, PText, TitleHotNew } from "../../styles/styledFavorite";
 
 export default function Favorite() {
   const isActivePage = useActivePage();

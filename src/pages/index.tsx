@@ -8,7 +8,7 @@ import { CustomContext } from "@/contrex/TasksProvider";
 import { dehydrate, QueryClient } from "react-query";
 
 import { TopTes } from "@/components/IndexTopTest";
-import { RenderPostsTest } from "./RenderPostsTest";
+import { RenderPostsTest } from "../components/RenderPostsTest";
 
 export default function Product() {
   const { search } = useContext(CustomContext);

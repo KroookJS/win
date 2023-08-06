@@ -1,9 +1,9 @@
-import { TitleHot } from "@/layout/Layout";
-import { TitleIconBlock } from "@/pages";
+
+
 import { TChildren } from "@/types/Product";
 import { WrapperSliderRecomendation } from "@/ui/Wrraper";
 import React, { FC } from "react";
-import { BiCategoryAlt } from "react-icons/bi";
+
 import styled from "styled-components";
 
 const NewWrapperTopChart = styled.main`
