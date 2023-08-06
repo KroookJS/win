@@ -75,7 +75,7 @@ const SortsNewImg = styled.img`
   }
 `;
 
-export const NewShorts = () => {
+ const NewShortsMem = () => {
   const router = useRouter();
 
   const windowWidth = useRef(window.innerWidth);
@@ -115,3 +115,5 @@ export const NewShorts = () => {
     </>
   );
 };
+
+export const NewShorts = React.memo(NewShortsMem)

@@ -9,7 +9,7 @@ import { getTopViews } from "@/api/products";
 import TestIsLoading from "@/components/TestIsLoading";
 import { useShortsQuery } from "@/hooks/useShortsAndPostsQuery";
 
-export const TopChart = () => {
+const TopChartMemo = () => {
   const { data: topPost, isLoading } = useShortsQuery(getTopViews, "getTop");
   const arr = [...Array(4)].map((_, i) => <TestIsLoading key={i} />);
   return (
@@ -29,3 +29,5 @@ export const TopChart = () => {
     </CategortiesImgList>
   );
 };
+
+export const TopChart = React.memo(TopChartMemo);

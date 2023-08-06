@@ -14,7 +14,7 @@ type TProps = {
 };
 let isBack = true;
 
-const PaginationNavigete: React.FC<TProps> = ({
+const PaginationNavigeteMem: React.FC<TProps> = ({
   curentPage,
   total,
   handlePaginationChange,
@@ -39,5 +39,5 @@ const PaginationNavigete: React.FC<TProps> = ({
     </div>
   </>
 );
-
+const PaginationNavigete = React.memo(PaginationNavigeteMem);
 export default PaginationNavigete;

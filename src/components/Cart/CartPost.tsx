@@ -101,7 +101,7 @@ const IconBox = styled.div`
   display: flex;
 `;
 
-export const CartPost: FC<IPost> = ({
+const CartPostMemo: FC<IPost> = ({
   userAvatar,
   _id,
   title,
@@ -199,3 +199,5 @@ export const CartPost: FC<IPost> = ({
     </WrapperArticleRecomendation>
   );
 };
+
+export const CartPost = React.memo(CartPostMemo);

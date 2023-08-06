@@ -8,12 +8,13 @@ import { GetStaticProps } from "next/types";
 import { IPost } from "@/types/Post";
 import { CartPost } from "@/components/Cart/CartPost";
 
-import { TitleIconBlock } from "..";
+
 import { BiCategoryAlt } from "react-icons/bi";
 import { CustomContext } from "@/contrex/TasksProvider";
 
 import { QueryClient, dehydrate } from "react-query";
 import { BlockDescCategoryAndModal } from "../model/[id]";
+import { TitleIconBlock } from "@/components/TitleComp";
 
 export default function CatigoryPage(props: any) {
   const { categoryText } = useContext(CustomContext);

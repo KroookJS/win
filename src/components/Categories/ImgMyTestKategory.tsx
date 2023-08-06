@@ -2,9 +2,9 @@ import { WrapperArticleNewCategory } from "@/ui/Wrraper";
 import { CardImage, CardImageCategpry } from "@/ui/CartStyle";
 import styled from "styled-components";
 import Link from "next/link";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { CustomContext } from "@/contrex/TasksProvider";
-import { TitleIconBlock } from "@/pages";
+
 import { BiCategoryAlt } from "react-icons/bi";
 import { TitleHot } from "@/layout/Layout";
 
@@ -42,7 +42,7 @@ const NewTitleCategory = styled.h3`
   -webkit-line-clamp: 1; */
 `;
 
-export const ImgMyTestKategory = ({
+const ImgMyTestKategoryMem = ({
   image,
   title,
   href,
@@ -67,3 +67,5 @@ export const ImgMyTestKategory = ({
     </Link>
   );
 };
+
+export const ImgMyTestKategory = React.memo(ImgMyTestKategoryMem)

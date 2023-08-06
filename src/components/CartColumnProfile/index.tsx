@@ -1,5 +1,4 @@
 import { TitleHot } from "@/layout/Layout";
-import { TitleIconBlock } from "@/pages";
 
 import { IPost } from "@/types/Post";
 
@@ -18,12 +17,13 @@ import {
 import { BlockAddText, BlockPriveteTitle } from "./StyleCartcolumn";
 import Link from "next/link";
 import { LinkStyle } from "@/ui/Button";
+import { TitleIconBlock } from "../TitleComp";
 
-export default function CartColumnProfile({
+export const CartColumnProfileMem = ({
   publicate,
 }: {
   publicate?: IPost[];
-}) {
+}) => {
   const renderPost = publicate ? (
     <WrapperProfileColumn>
       {publicate.map((post: IPost) => {
@@ -70,4 +70,8 @@ export default function CartColumnProfile({
       </ContainerProfileBody>
     </>
   );
-}
+};
+
+const CartColumnProfile = React.memo(CartColumnProfileMem);
+
+export default CartColumnProfile;

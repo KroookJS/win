@@ -19,7 +19,7 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { PlusNavBar } from "../NavBarModel/ui/PlusNavBar";
 import { IconCount } from "../NavBarModel";
 import { CustomContext } from "@/contrex/TasksProvider";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { CgProfile } from "react-icons/cg";
 import { useRouter } from "next/router";
 
@@ -191,4 +191,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default React.memo(NavBar);

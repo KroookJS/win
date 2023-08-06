@@ -21,9 +21,8 @@ const AvaBlock = styled.img`
   border: 4px solid var(--colors-bg-cart);
 `;
 
-export const RegisterForm = () => {
+const RegisterFormMem = () => {
   const [valueAvata, setValueAvatar] = useState("");
-
   const inputRef = useRef<any>(null);
 
   const handleChangeFileAvatar = async (event: any) => {
@@ -159,3 +158,5 @@ export const RegisterForm = () => {
     </FormBlock>
   );
 };
+
+export const RegisterForm = React.memo(RegisterFormMem);

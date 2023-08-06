@@ -7,7 +7,7 @@ import { setCookie } from "nookies";
 import { loginUser } from "@/api/auth";
 import { FormBlock } from "./RegisterForm";
 
-export const LoginForm = () => {
+const LoginFormMem = () => {
   const onSubmit = async (value: LoginFormDto) => {
     try {
       const { token } = await loginUser(value);
@@ -34,7 +34,7 @@ export const LoginForm = () => {
   return (
     <FormBlock>
       <Form
-      style={{color: 'white'}}
+        style={{ color: "white" }}
         name="basic"
         labelCol={{
           span: 5,
@@ -42,7 +42,7 @@ export const LoginForm = () => {
         onFinish={onSubmit}
       >
         <Form.Item
-        style={{color: 'white'}}
+          style={{ color: "white" }}
           label="eMail"
           name="email"
           rules={[
@@ -87,3 +87,5 @@ export const LoginForm = () => {
     </FormBlock>
   );
 };
+
+export const LoginForm = React.memo(LoginFormMem);

@@ -42,7 +42,7 @@ const CartAvar = styled.img`
   object-fit: cover;
 `;
 
-export const UsersItems = ({
+const UsersItemsMem = ({
   userAvatar,
   user,
   userName,
@@ -83,3 +83,5 @@ export const UsersItems = ({
     </NewCart>
   );
 };
+
+export const UsersItems = React.memo(UsersItemsMem);

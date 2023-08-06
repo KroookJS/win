@@ -1,6 +1,7 @@
+import React from "react";
 import { LogoColor } from "../Header";
 
-function ComponentIsLoading() {
+function ComponentIsLoadingMem() {
   return (
     <div
       style={{
@@ -32,5 +33,5 @@ function ComponentIsLoading() {
     </div>
   );
 }
-
+const ComponentIsLoading = React.memo(ComponentIsLoadingMem);
 export default ComponentIsLoading;

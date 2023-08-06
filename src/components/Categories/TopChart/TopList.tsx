@@ -1,5 +1,6 @@
+import { TitleIconBlock } from "@/components/TitleComp";
 import { TitleHot } from "@/layout/Layout";
-import { TitleIconBlock } from "@/pages";
+
 import { TChildren } from "@/types/Product";
 import { WrapperTopChart } from "@/ui/Wrraper";
 import React, { FC } from "react";
@@ -41,7 +42,7 @@ const HelpedDiv = styled.div`
   }
 `;
 
-export const CategortiesImgList: FC<TChildren> = ({ children }) => {
+export const CategortiesImgListMem: FC<TChildren> = ({ children }) => {
   return (
     <NewWrapperTopChart>
       <HelpedDiv />
@@ -53,3 +54,5 @@ export const CategortiesImgList: FC<TChildren> = ({ children }) => {
     </NewWrapperTopChart>
   );
 };
+
+export const CategortiesImgList = React.memo(CategortiesImgListMem);

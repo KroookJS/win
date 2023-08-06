@@ -1,7 +1,7 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-const PostIsLoading = () => (
+const PostIsLoadingMem = () => (
   <ContentLoader
     rtl
     speed={1}
@@ -17,5 +17,5 @@ const PostIsLoading = () => (
     <rect x="0" y="60" rx="2" ry="2" width="400" height="400" />
   </ContentLoader>
 );
-
+const PostIsLoading = React.memo(PostIsLoadingMem);
 export default PostIsLoading;

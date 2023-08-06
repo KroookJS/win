@@ -8,11 +8,12 @@ import { GetStaticProps } from "next/types";
 import { IPost } from "@/types/Post";
 import { CartPost } from "@/components/Cart/CartPost";
 
-import { TitleIconBlock } from "..";
+
 import { BiCategoryAlt } from "react-icons/bi";
 import { CustomContext } from "@/contrex/TasksProvider";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import { TitleIconBlock } from "@/components/TitleComp";
 
 export const BlockDescCategoryAndModal = styled.div`
   margin: 13px auto;

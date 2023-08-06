@@ -72,7 +72,7 @@ export const IconCount = styled.div`
 type TProps = {
   count?: number;
 };
-export const NavBarModel: FC<TProps> = () => {
+const NavBarModelMemo: FC<TProps> = () => {
   const { likeArr } = useContext(CustomContext);
   return (
     <NavBarModelConrainer>
@@ -95,3 +95,5 @@ export const NavBarModel: FC<TProps> = () => {
     </NavBarModelConrainer>
   );
 };
+
+export const NavBarModel = React.memo(NavBarModelMemo);

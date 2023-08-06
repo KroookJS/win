@@ -26,7 +26,7 @@ export const TitleHot = styled.h2`
     padding-left: 35px;
   } */
 `;
-export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
+const LayoutMem: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   title,
   children,
   description,
@@ -125,3 +125,5 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
     </>
   );
 };
+
+export const Layout = React.memo(LayoutMem);

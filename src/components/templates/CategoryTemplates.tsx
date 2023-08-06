@@ -1,5 +1,5 @@
 import { TitleHot } from "@/layout/Layout";
-import { TitleIconBlock } from "@/pages";
+
 import { ButtonCategoryPage } from "@/ui/Button";
 import React, { FC, useState } from "react";
 import { BiCategoryAlt } from "react-icons/bi";
@@ -7,12 +7,13 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { ImgMyTestKategory } from "../Categories/ImgMyTestKategory";
 import { ICategory, IModel } from "@/types/Catigories";
 import { ListColumn } from "../Categories/RenderCategory/ListColumn";
+import { TitleIconBlock } from "../TitleComp";
 
 type TPropsCategory = {
   categories: ICategory[];
 };
 
-export const CategoryTemplates: FC<TPropsCategory> = ({ categories }) => {
+const CategoryTemplatesMem: FC<TPropsCategory> = ({ categories }) => {
   const [isActivePage, setIsActivePage] = useState(true);
 
   /*   const categoryRender = model ? (
@@ -65,3 +66,5 @@ export const CategoryTemplates: FC<TPropsCategory> = ({ categories }) => {
     </>
   );
 };
+
+export const CategoryTemplates = React.memo(CategoryTemplatesMem)

@@ -4,7 +4,7 @@ import { ButtonNext } from "@/ui/Button";
 
 import GetItem from "./GetItem";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { NavBarModel } from "./NavBarModel";
 import { IPost } from "@/types/Post";
@@ -139,7 +139,7 @@ const UserFolowBlock = styled.div`
 const BlockInfoShadow = styled.div`
   filter: drop-shadow(153px -199px 123px #ffa31a);
 `;
-export const Info = (props: IPost) => {
+const InfoMem = (props: IPost) => {
   const {
     title,
     text,
@@ -195,9 +195,6 @@ export const Info = (props: IPost) => {
             playsinline={true}
             url={`http://37.1.219.168:4444${videoUrl}`}
           />
-          {/* <IconBlock>
-            <AiOutlinePlayCircle />
-          </IconBlock> */}
         </ImageBlock>
 
         <BlockInfoShadow>
@@ -283,3 +280,5 @@ export const Info = (props: IPost) => {
     </>
   );
 };
+
+export const Info = React.memo(InfoMem)

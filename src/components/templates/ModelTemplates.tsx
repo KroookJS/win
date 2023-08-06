@@ -1,5 +1,5 @@
 import { TitleHot } from "@/layout/Layout";
-import { TitleIconBlock } from "@/pages";
+
 import { ButtonCategoryPage } from "@/ui/Button";
 import React, { FC, useState } from "react";
 import { BiCategoryAlt } from "react-icons/bi";
@@ -12,6 +12,7 @@ import { getAllUsers } from "@/api/user";
 import { IUser } from "@/api/dto/auth.dto";
 import { UsersItems } from "../Items/UsersItems";
 import { ListsColumnUsers } from "../Categories/RenderCategory/ListsColumnUsers";
+import { TitleIconBlock } from "../TitleComp";
 
 type TProps = {
   models: IModel[];
